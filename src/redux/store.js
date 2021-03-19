@@ -3,6 +3,8 @@ import { getVideosList, isLoading } from './reducer';
 import getListSaga from './saga';
 import { all, fork } from 'redux-saga/effects';
 import createSagaMiddleware from 'redux-saga';
+import { persistReducer, persistStore } from 'redux-persist';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // creating reducers
 const rootReducer = combineReducers({
@@ -20,15 +22,33 @@ export function* rootSaga() {
   ]);
 }
 
+//creating store persist
+const persistConfig = {
+  // Root
+  key: 'root',
+  // Storage Method (React Native)
+  storage: AsyncStorage,
+  // Whitelist (Save Specific Reducers)
+  whitelist: [
+  ],
+  blacklist: [],
+  throttle: 1000,
+  debounce: 1000,
+};
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 //creating store
-const store = createStore(
-  rootReducer,
+let store = createStore(
+  persistedReducer,
   applyMiddleware(
     sagaMiddleware,
   ),
 );
 
+//creating persistor
+let persistor = persistStore(store);
+
 //running saga middleware
 sagaMiddleware.run(rootSaga);
 
-export default store;
+export { store, persistor };

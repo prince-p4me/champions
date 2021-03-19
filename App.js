@@ -4,7 +4,9 @@ import StackNavigator from "./src/navigation/stack";
 import { navigationRef, isReadyRef } from "./src/navigation/navigation";
 import { Provider } from 'react-redux';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import store from './src/redux/store';
+import { persistor, store } from './src/redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+
 import Loader from "./src/components/Loader";
 import { LogBox } from "react-native";
 
@@ -21,13 +23,15 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <Provider store={store}>
-        <NavigationContainer ref={navigationRef}
-          onReady={() => {
-            isReadyRef.current = true;
-          }}>
-          <StackNavigator />
-          <Loader />
-        </NavigationContainer>
+        <PersistGate loading={null} persistor={persistor}>
+          <NavigationContainer ref={navigationRef}
+            onReady={() => {
+              isReadyRef.current = true;
+            }}>
+            <StackNavigator />
+            <Loader />
+          </NavigationContainer>
+        </PersistGate>
       </Provider>
     </SafeAreaProvider>
   );
