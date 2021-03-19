@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { getVideosList, isLoading } from './reducer';
+import { getVideosList, isLoading, isLogin } from './reducer';
 import getListSaga from './saga';
 import { all, fork } from 'redux-saga/effects';
 import createSagaMiddleware from 'redux-saga';
@@ -9,7 +9,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // creating reducers
 const rootReducer = combineReducers({
   videos: getVideosList,
-  isLoading
+  isLoading,
+  isLogin
 });
 
 //creating, applying sagas

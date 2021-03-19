@@ -1,15 +1,10 @@
-import { GET_VIDEOS_LIST, SET_LOADING } from './types';
+import * as Types from './types';
 
-export function getVideos(payload) {
+export function doLogin(payload) {
     return {
-        type: GET_VIDEOS_LIST,
+        type: Types.DO_LOGIN,
         payload
     }
 }
 
-// export function setLoading(payload) {
-//     return {
-//         type: SET_LOADING,
-//         payload
-//     }
-// }
+// add another actions further

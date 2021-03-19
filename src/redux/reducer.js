@@ -1,4 +1,4 @@
-import { VIDEOS_LIST, SET_LOADING } from './types';
+import * as Types from './types';
 // import initlist from "../assets/json/list";
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
 
 export const getVideosList = (state = initialState, action) => {
     switch (action.type) {
-        case VIDEOS_LIST:
+        case Types.VIDEOS_LIST:
             return {
                 ...state,
                 list: action.payload
@@ -19,10 +19,18 @@ export const getVideosList = (state = initialState, action) => {
 
 export const isLoading = (state = false, action) => {
     switch (action.type) {
-        case SET_LOADING:
+        case Types.SET_LOADING:
             return action.payload;
         default:
             return state;
     }
 }
-export default getVideosList;
+
+export const isLogin = (state = false, action) => {
+    switch (action.type) {
+        case Types.IS_LOGIN:
+            return action.payload;
+        default:
+            return state;
+    }
+}

@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, Dimensions } from 'react-native';
-import Header from '../components/Header';
-import styles from '../utility/Style';
-import * as Navigation from '../navigation/navigation';
+import Header from '../../components/Header';
+import styles from '../../utility/Style';
+import * as Navigation from '../../navigation/navigation';
 
 const Detail = ({ route }) => {
 
