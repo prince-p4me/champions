@@ -27,7 +27,6 @@ import Sizes from '../../utility/Sizes';
 import { Picker } from '@react-native-picker/picker';
 
 const LoginScreen = () => {
-  const childRef = useRef();
   const [language, setLanguage] = useState('en');
 
   const [rtlLang, setRtlLang] = useState(false);

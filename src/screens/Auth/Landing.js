@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, ImageBackground, Image} from 'react-native';
+import { View, StyleSheet, ImageBackground, Image } from 'react-native';
 import globalStyles from '../../utility/Style';
 import Images from '../../utility/Image';
 import Constant from '../../utility/Constant';
@@ -8,7 +8,7 @@ import Color from '../../utility/Color';
 import i18n from 'i18n-js';
 import FullButton from '../../components/FullButton';
 
-const LandingScreen = ({route}) => {
+const LandingScreen = ({ route }) => {
   return (
     <ImageBackground
       source={Images.bgGreen}
@@ -17,7 +17,7 @@ const LandingScreen = ({route}) => {
       <View style={styles.firstSection}>
         <Image
           source={Images.champLogo}
-          style={{width: '100%', height: '30%'}}
+          style={{ width: '100%', height: '30%' }}
           resizeMode="contain"></Image>
         <View style={styles.btnContainer}>
           <FullButton
@@ -33,7 +33,7 @@ const LandingScreen = ({route}) => {
       </View>
       <Image
         source={Images.saina}
-        style={{flex: 5}}
+        style={{ flex: 5 }}
         resizeMode="contain"></Image>
     </ImageBackground>
   );

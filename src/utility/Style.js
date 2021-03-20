@@ -1,4 +1,4 @@
-import {View, StyleSheet, Dimensions} from 'react-native';
+import { View, StyleSheet, Dimensions } from 'react-native';
 import Color from './Color';
 
 export default StyleSheet.create({
@@ -76,7 +76,7 @@ export default StyleSheet.create({
     color: Color.white,
     letterSpacing: 1,
   },
-  safeArea: {backgroundColor: Color.theme, width: '100%'},
+  safeArea: { backgroundColor: Color.theme, width: '100%' },
   center: {
     width: '100%',
     flex: 1,
@@ -85,10 +85,11 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    backgroundColor: Color.white
     // justifyContent: "flex-start",
     // backgroundColor: "red",
   },
-  sideIcon: {width: 28, height: 15, tintColor: Color.white},
+  sideIcon: { width: 28, height: 15, tintColor: Color.white },
   noData: {
     flex: 1,
     justifyContent: 'center',

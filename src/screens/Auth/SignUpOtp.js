@@ -13,7 +13,7 @@ import FullButton from '../../components/FullButton';
 import { TextBold, TextLite, TextRegular, TextThin } from '../../components/TextView';
 import LinkButton from './LinkButton';
 
-const OtpScreen = ({ route }) => {
+const SignUpOtp = ({ route }) => {
   return (
     <View style={[GlobalStyles.container, { paddingVertical: 30 }]}>
       <TextBold text={i18n.t('otplongtext')}
@@ -35,7 +35,7 @@ const OtpScreen = ({ route }) => {
       <View style={{ width: "100%", paddingHorizontal: "10%" }}>
         <FullButton
           onPress={() => Navigation.navigate('SignUp')}
-          text={i18n.t('login')}
+          text={i18n.t('signup2')}
           textColor={Color.white}
           bgColor={Color.theme} />
       </View>
@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
     borderColor: Color.theme,
   },
 });
-export default OtpScreen;
+export default SignUpOtp;

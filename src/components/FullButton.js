@@ -9,7 +9,7 @@ const FullButton = props => {
 
   return (
     <TouchableOpacity style={[styles.button,
-    bgColor && { backgroundColor: Color.semiGold },
+    bgColor && { backgroundColor: bgColor },
     btnStyle && btnStyle
     ]} activeOpacity={.7}
       onPress={() => onPress()}>
