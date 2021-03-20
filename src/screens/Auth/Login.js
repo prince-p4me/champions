@@ -14,18 +14,14 @@ import hn from '../../translations/hn.json';
 import ur from '../../translations/ur.json';
 
 const LoginScreen = () => {
-  const setLanguageApp = (language) => {
-    I18nManager.forceRTL(false);
-    if (language == 'ur') {
-      I18nManager.forceRTL(true);
-    }
-    setLanguage(language);
-  };
   const childRef = useRef();
   const [language, setLanguage] = useState('en');
+
+  const [rtlLang, setRtlLang] = useState(false);
   i18n.locale = language;
   i18n.fallbacks = true;
   i18n.translations = {en, hn, ur};
+  I18nManager.forceRTL(rtlLang);
   const list = useSelector((state) => state.videos.list);
   const dispatch = useDispatch();
 
@@ -65,7 +61,10 @@ const LoginScreen = () => {
               padding: 10,
               marginRight: 10,
             }}
-            onPress={() => setLanguageApp('hn')}>
+            onPress={() => {
+              setLanguage('hn');
+              setRtlLang(false);
+            }}>
             <Text style={{color: 'white'}}>Hindi</Text>
           </TouchableOpacity>
 
@@ -75,7 +74,10 @@ const LoginScreen = () => {
               padding: 10,
               marginRight: 10,
             }}
-            onPress={() => setLanguageApp('en')}>
+            onPress={() => {
+              setLanguage('en');
+              setRtlLang(false);
+            }}>
             <Text style={{color: 'white'}}>English</Text>
           </TouchableOpacity>
 
@@ -84,7 +86,10 @@ const LoginScreen = () => {
               backgroundColor: Colors.theme,
               padding: 10,
             }}
-            onPress={() => setLanguageApp('ur')}>
+            onPress={() => {
+              setLanguage('ur');
+              setRtlLang(true);
+            }}>
             <Text style={{color: 'white'}}>URDU</Text>
           </TouchableOpacity>
         </View>
