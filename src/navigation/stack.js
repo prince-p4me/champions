@@ -35,10 +35,10 @@ const StackNavigator = () => {
         </>
       ) : (
         <>
-          <Stack.Screen name="Landing" component={LandingScreen} />
-          <Stack.Screen name="SignIn" component={LoginScreen} />
-          <Stack.Screen name="Otp2" component={SignUpOtp} />
+          {/* <Stack.Screen name="Landing" component={LandingScreen} />
+          <Stack.Screen name="SignIn" component={LoginScreen} /> */}
           <Stack.Screen name="Otp" component={OtpScreen} />
+          <Stack.Screen name="Otp2" component={SignUpOtp} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
         </>
       )}

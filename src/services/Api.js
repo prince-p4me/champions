@@ -14,7 +14,7 @@ async function callApi(urlString, body, methodType) {
     const response = await fetch(urlString, {
       method: methodType,
       headers,
-      body: ((methodType == "POST" || methodType == "PUT") && body) ? body : {}
+      body: ((methodType == "POST" || methodType == "PUT") && body) ? JSON.stringify(body) : {}
     });
     const jsonResposne = await response.json();
     console.log("result :--", JSON.stringify(jsonResposne));

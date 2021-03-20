@@ -1,19 +1,20 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
-import Header from '../../components/Header';
+import { View, StyleSheet } from 'react-native';
 import GlobalStyles from '../../utility/Style';
 import * as Navigation from '../../navigation/navigation';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import Color from '../../utility/Color';
 import i18n from 'i18n-js';
 import Sizes from '../../utility/Sizes';
-import Fonts from '../../utility/Font';
 import FullButton from '../../components/FullButton';
-
-import { TextBold, TextLite, TextRegular, TextThin } from '../../components/TextView';
+import { TextBold, TextRegular } from '../../components/TextView';
 import LinkButton from './LinkButton';
+import * as Actions from "../../redux/action";
+import { useSelector, useDispatch } from 'react-redux';
 
 const OtpScreen = ({ route }) => {
+  const dispatch = useDispatch();
+
   return (
     <View style={[GlobalStyles.container, { paddingVertical: 30 }]}>
       <TextBold text={i18n.t('otplongtext')}
@@ -34,7 +35,9 @@ const OtpScreen = ({ route }) => {
       />
       <View style={{ width: "100%", paddingHorizontal: "10%" }}>
         <FullButton
-          onPress={() => Navigation.navigate('SignUp')}
+          onPress={() => {
+            Navigation.navigate('SignUp')
+          }}
           text={i18n.t('login')}
           textColor={Color.white}
           bgColor={Color.theme} />
@@ -42,7 +45,12 @@ const OtpScreen = ({ route }) => {
       <View style={{ height: 30 }}></View>
       <LinkButton text={i18n.t("didntrecive")}
         btnText={i18n.t("click")}
-        onPress={() => alert("sending you shortly")} />
+        onPress={() => {
+          let obj = {
+            mobile: "8285724681"
+          };
+          dispatch(Actions.resendOtp(obj));
+        }} />
     </View>
   );
 };

@@ -7,4 +7,12 @@ export function doLogin(payload) {
     }
 }
 
+export function resendOtp(payload) {
+    return {
+        type: Types.RESEND_OTP,
+        payload
+    }
+}
+
+
 // add another actions further
