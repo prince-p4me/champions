@@ -3,8 +3,9 @@ import { View, Text, TouchableOpacity, I18nManager } from 'react-native';
 import Header from '../../components/Header';
 import Colors from '../../utility/Color';
 import styles from '../../utility/Style';
-import { doLogin, setLoading } from '../../redux/action';
 import { useSelector, useDispatch } from 'react-redux';
+import Loader from '../../components/Loader';
+import { doLogin, setLoading } from '../../redux/action';
 
 import globalStyles from '../../utility/Style';
 import Images from '../../utility/Image';
@@ -26,7 +27,10 @@ import Sizes from '../../utility/Sizes';
 import { Picker } from '@react-native-picker/picker';
 
 const LoginScreen = () => {
+  const childRef = useRef();
   const [language, setLanguage] = useState('en');
+
+  const [rtlLang, setRtlLang] = useState(false);
   i18n.locale = language;
   i18n.fallbacks = true;
   i18n.translations = { en, hn, ur, pu, ba };
@@ -35,14 +39,6 @@ const LoginScreen = () => {
   const dispatch = useDispatch();
   // I18nManager.forceRTL(false);
   // setLanguage("en");
-
-  const setLanguageApp = (language) => {
-    I18nManager.forceRTL(false);
-    if (language == 'ur') {
-      I18nManager.forceRTL(true);
-    }
-    setLanguage(language);
-  };
 
   return (
     <View style={[styles.container, { padding: 14, backgroundColor: Colors.white }]}>
