@@ -15,17 +15,26 @@ import FullButton from '../../components/FullButton';
 import en from '../../translations/en.json';
 import hn from '../../translations/hn.json';
 import ur from '../../translations/ur.json';
-import { TextRegular } from '../../components/TextView';
+import pu from '../../translations/pu.json';
+import ba from '../../translations/ba.json';
+import { TextRegular, TextSemiBold } from '../../components/TextView';
 import TextDevider from '../../components/TextDevider';
+import LinkButton from './LinkButton';
+import Sizes from '../../utility/Sizes';
+// import DropDownPicker from 'react-native-dropdown-picker';
+// import RNPickerSelect from 'react-native-picker-select';
+import { Picker } from '@react-native-picker/picker';
 
 const LoginScreen = () => {
   const [language, setLanguage] = useState('en');
   i18n.locale = language;
   i18n.fallbacks = true;
-  i18n.translations = { en, hn, ur };
+  i18n.translations = { en, hn, ur, pu, ba };
   const childRef = useRef();
   const list = useSelector((state) => state.videos.list);
   const dispatch = useDispatch();
+  // I18nManager.forceRTL(false);
+  // setLanguage("en");
 
   const setLanguageApp = (language) => {
     I18nManager.forceRTL(false);
@@ -43,16 +52,38 @@ const LoginScreen = () => {
       <TextDevider text={i18n.t("loginwith")}></TextDevider>
       <View style={{
         flex: 5,
-        // backgroundColor: "red",
         width: "100%",
         justifyContent: "flex-end"
       }}>
-        <TouchableOpacity style={{
+        <LinkButton text={i18n.t("doyouhaveac")}
+          btnText={i18n.t("signup2")}
+          onPress={() => Navigation.navigate("SignUp")} />
+        <View style={{ height: 40 }}></View>
+        <View style={{
           width: "100%",
-          flexDirection: "row",
-          justifyContent: "center",
+          flexDirection: "row", justifyContent: "center",
           alignItems: "center"
-        }}></TouchableOpacity>
+        }}>
+          <TextSemiBold text={i18n.t("chooselanguage")} />
+          <Picker
+            style={{
+              height: 30, width: "50%",
+              borderWidth: 1,
+              borderColor: Colors.black,
+              marginStart: 10
+            }}
+            itemStyle={{ height: 30, backgroundColor: "red" }}
+            selectedValue={language}
+            onValueChange={(itemValue, itemIndex) =>
+              setLanguageApp(itemValue)
+            }>
+            <Picker.Item label="English" value="en" />
+            <Picker.Item label="HIndi" value="hi" />
+            <Picker.Item label="Urdu" value="ur" />
+            <Picker.Item label="Punjabi" value="pu" />
+            <Picker.Item label="Bangla" value="ba" />
+          </Picker>
+        </View>
       </View>
     </View>
   );
