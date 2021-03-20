@@ -1,34 +1,68 @@
-import React, { useRef, useState } from "react";
-import { View, Text, Image, TouchableOpacity, FlatList, TextInput } from "react-native";
-import Header from "../../components/Header";
-import Colors from "../../utility/Color";
-import styles from "../../utility/Style";
-import { doLogin, setLoading } from "../../redux/action";
-import { useSelector, useDispatch } from 'react-redux';
-import Loader from "../../components/Loader";
-import * as Navigation from "../../navigation/navigation";
+import React, {useRef, useState} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
+import Header from '../../components/Header';
+import Colors from '../../utility/Color';
+import styles from '../../utility/Style';
+import {doLogin, setLoading} from '../../redux/action';
+import {useSelector, useDispatch} from 'react-redux';
+import Loader from '../../components/Loader';
+import * as Navigation from '../../navigation/navigation';
+
+import i18n from 'i18n-js';
+import en from '../../translations/en.json';
+import hn from '../../translations/hn.json';
 
 const LoginScreen = () => {
-    const list = useSelector(state => state.videos.list);
-    const dispatch = useDispatch();
+  const childRef = useRef();
+  const [language, setLanguage] = useState('en');
+  i18n.locale = language;
+  i18n.fallbacks = true;
+  i18n.translations = {en, hn};
+  const list = useSelector((state) => state.videos.list);
+  const dispatch = useDispatch();
 
-    const childRef = useRef();
-    const [search, setSearch] = useState("");
-    const [speechModal, setSpeechModal] = useState(false);
+  return (
+    <View style={styles.container}>
+      <Header title={i18n.t('login')} />
+      <View style={[styles.center, {justifyContent: 'center'}]}>
+        <TouchableOpacity
+          style={{
+            backgroundColor: Colors.theme,
+            padding: 10,
+          }}
+          onPress={() => dispatch(doLogin())}>
+          <Text style={{color: 'white'}}>{i18n.t('login')}</Text>
+        </TouchableOpacity>
 
-    return (
-        <View style={styles.container}>
-            <Header title={"Login"} />
-            <View style={[styles.center, { justifyContent: "center" }]}>
-                <TouchableOpacity style={{
-                    backgroundColor: Colors.theme,
-                    padding: 10
-                }} onPress={() => dispatch(doLogin())}>
-                    <Text style={{ color: "white" }}>Login</Text>
-                </TouchableOpacity>
-            </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: 20,
+          }}>
+          <TouchableOpacity
+            style={{
+              backgroundColor: Colors.theme,
+              padding: 10,
+              marginRight: 10,
+            }}
+            onPress={() => setLanguage('hn')}>
+            <Text style={{color: 'white'}}>Hindi</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={{
+              backgroundColor: Colors.theme,
+              padding: 10,
+            }}
+            onPress={() => setLanguage('en')}>
+            <Text style={{color: 'white'}}>English</Text>
+          </TouchableOpacity>
         </View>
-    );
-}
+      </View>
+    </View>
+  );
+};
 
-export default LoginScreen
+export default LoginScreen;

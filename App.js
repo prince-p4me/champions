@@ -1,22 +1,19 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import StackNavigator from "./src/navigation/stack";
-import { navigationRef, isReadyRef } from "./src/navigation/navigation";
-import { Provider } from 'react-redux';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { persistor, store } from './src/redux/store';
-import { PersistGate } from 'redux-persist/integration/react';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import StackNavigator from './src/navigation/stack';
+import {navigationRef, isReadyRef} from './src/navigation/navigation';
+import {Provider} from 'react-redux';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {persistor, store} from './src/redux/store';
+import {PersistGate} from 'redux-persist/integration/react';
 
-import Loader from "./src/components/Loader";
-import { LogBox } from "react-native";
-
-// const store = configureStore();
-
+import Loader from './src/components/Loader';
+import {LogBox} from 'react-native';
 const App = () => {
   LogBox.ignoreAllLogs(true);
   React.useEffect(() => {
     return () => {
-      isReadyRef.current = false
+      isReadyRef.current = false;
     };
   }, []);
 
@@ -24,7 +21,8 @@ const App = () => {
     <SafeAreaProvider>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <NavigationContainer ref={navigationRef}
+          <NavigationContainer
+            ref={navigationRef}
             onReady={() => {
               isReadyRef.current = true;
             }}>
