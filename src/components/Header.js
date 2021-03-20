@@ -19,9 +19,6 @@ const Header = (props) => {
   console.log("back", back);
   return (
     <View style={{ width: '100%' }}>
-      <StatusBar
-        backgroundColor={Color.theme}
-        barStyle="dark-content"></StatusBar>
       <SafeAreaView style={styles.safeArea}></SafeAreaView>
       <View style={styles.header}>
         {back && (

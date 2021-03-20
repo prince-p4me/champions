@@ -1,9 +1,8 @@
 {
-    "login": "Login",
-
+    "login": "Log In",
     "app_name": "10X Champions",
     "getstarttedtext": "Discover the best rice from Over 100 variety \nand get a chance to win exciting prizes",
-    "signup": "Signup",
+    "signup": "Sign Up",
     "chooselanguage": "Choose Language",
     "loginlongtext": "Please enter your registered mobile number  \nto  receive a  OTP for Login your account ",
     "Sendotp": "Send OTP",

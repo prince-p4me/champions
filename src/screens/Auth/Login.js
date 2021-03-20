@@ -9,9 +9,6 @@ import Loader from '../../components/Loader';
 import * as Navigation from '../../navigation/navigation';
 
 import i18n from 'i18n-js';
-import en from '../../translations/en.json';
-import hn from '../../translations/hn.json';
-import ur from '../../translations/ur.json';
 
 const LoginScreen = () => {
   const childRef = useRef();
@@ -25,7 +22,6 @@ const LoginScreen = () => {
   const list = useSelector((state) => state.videos.list);
   const dispatch = useDispatch();
 
-  console.log(i18n.t('getstarttedtext'));
   return (
     <View style={styles.container}>
       <Header title={i18n.t('login')} />
