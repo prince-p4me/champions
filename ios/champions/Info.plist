@@ -39,6 +39,59 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string></string>
+	</array>
+	<key>Item 0</key>
+	<string>Metropolis-Black.otf</string>
+	<key>Item 1</key>
+	<string>Metropolis-BlackItalic.otf</string>
+
+	<key>Item 2</key>
+	<string>Metropolis-Bold.otf</string>
+	<key>Item 3</key>
+	<string>Metropolis-BoldItalic.otf</string>
+
+	<key>Item 4</key>
+	<string>Metropolis-ExtraBold.otf</string>
+	<key>Item 5</key>
+	<string>Metropolis-ExtraBoldItalic.otf</string>
+
+	<key>Item 6</key>
+	<string>Metropolis-ExtraLight.otf</string>
+	<key>Item 7</key>
+	<string>Metropolis-ExtraLightItalic.otf</string>
+
+	<key>Item 8</key>
+	<string>Metropolis-Light.otf</string>
+	<key>Item 9</key>
+	<string>Metropolis-LightItalic.otf</string>
+
+	<key>Item 10</key>
+	<string>Metropolis-Medium.otf</string>
+	<key>Item 11</key>
+	<string>Metropolis-MediumItalic.otf</string>
+
+
+	<key>Item 12</key>
+	<string>Metropolis-Regular.otf</string>
+	<key>Item 13</key>
+	<string>Metropolis-RegularItalic.otf</string>
+
+	<key>Item 14</key>
+	<string>Metropolis-SemiBold.otf</string>
+	<key>Item 15</key>
+	<string>Metropolis-SemiBoldItalic.otf</string>
+
+	<key>Item 16</key>
+	<string>Metropolis-Thin.otf</string>
+	<key>Item 17</key>
+	<string>Metropolis-ThinItalic.otf</string>
+
+
+	<key>NSCameraUsageDescription</key>
+	<string>This app require to access camera</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
