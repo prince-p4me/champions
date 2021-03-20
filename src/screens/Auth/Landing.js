@@ -1,13 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, ImageBackground, Image, TouchableOpacity } from 'react-native';
-import Header from '../../components/Header';
+import { View, StyleSheet, ImageBackground, Image } from 'react-native';
 import globalStyles from '../../utility/Style';
 import Images from '../../utility/Image';
 import Constant from '../../utility/Constant';
 import * as Navigation from '../../navigation/navigation';
 import Color from '../../utility/Color';
-import Sizes from '../../utility/Sizes';
-import { TextBold, TextRegular } from '../../components/TextView';
 import i18n from 'i18n-js';
 import FullButton from '../../components/FullButton';
 
