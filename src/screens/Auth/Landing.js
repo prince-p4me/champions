@@ -20,7 +20,7 @@ const LandingScreen = ({ route }) => {
                     style={{ width: "100%", height: "30%" }} resizeMode="contain"></Image>
                 <View style={styles.btnContainer}>
                     <TouchableOpacity style={styles.button} activeOpacity={.7}
-                        onPress={() => alert("Hello")}>
+                        onPress={() => Navigation.navigate("SignIn")}>
                         <TextBold text={i18n.t('login')}
                             style={{ color: Color.theme, fontSize: Sizes.medium }} />
                     </TouchableOpacity>
