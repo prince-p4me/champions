@@ -1,7 +1,21 @@
 import { View, StyleSheet, Dimensions } from 'react-native';
 import Color from './Color';
+import Constant from './Constant';
 
 export default StyleSheet.create({
+  dialCode: {
+    width: 50, height: 45,
+    alignItems: "flex-end",
+    justifyContent: "center"
+  },
+  inputBox: {
+    width: Constant.width - 64, height: 45,
+    backgroundColor: Colors.bgGray,
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 20, marginTop: 50,
+    overflow: "hidden"
+  },
   mikeButton: {
     width: 60,
     height: 60,
