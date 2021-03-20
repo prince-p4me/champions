@@ -5,9 +5,7 @@ import Colors from '../../utility/Color';
 import styles from '../../utility/Style';
 import {useSelector, useDispatch} from 'react-redux';
 import Loader from '../../components/Loader';
-import * as Navigation from '../../navigation/navigation';
 import {doLogin, setLoading} from '../../redux/action';
-import {useSelector, useDispatch} from 'react-redux';
 
 import globalStyles from '../../utility/Style';
 import Images from '../../utility/Image';
