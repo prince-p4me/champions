@@ -1,14 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, ImageBackground, Image, TouchableOpacity } from 'react-native';
-import Header from '../../components/Header';
+import { View, StyleSheet, ImageBackground, Image } from 'react-native';
 import globalStyles from '../../utility/Style';
 import Images from '../../utility/Image';
 import Constant from '../../utility/Constant';
 import * as Navigation from '../../navigation/navigation';
 import Color from '../../utility/Color';
-import Sizes from '../../utility/Sizes';
-import { TextBold, TextRegular } from '../../components/TextView';
 import i18n from 'i18n-js';
+import FullButton from '../../components/FullButton';
 
 const LandingScreen = ({ route }) => {
 
@@ -19,15 +17,14 @@ const LandingScreen = ({ route }) => {
                 <Image source={Images.champLogo}
                     style={{ width: "100%", height: "30%" }} resizeMode="contain"></Image>
                 <View style={styles.btnContainer}>
-                    <TouchableOpacity style={styles.button} activeOpacity={.7}
-                        onPress={() => Navigation.navigate("SignIn")}>
-                        <TextBold text={i18n.t('login')}
-                            style={{ color: Color.theme, fontSize: Sizes.medium }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={[styles.button, { backgroundColor: Color.semiGold }]} activeOpacity={.7}>
-                        <TextRegular text={i18n.t('signup')}
-                            style={{ color: Color.white, fontSize: Sizes.medium }} />
-                    </TouchableOpacity>
+                    <FullButton onPress={() => Navigation.navigate("SignIn")}
+                        text={i18n.t('login')}></FullButton>
+
+                    <FullButton onPress={() => Navigation.navigate("SignUp")}
+                        text={i18n.t('signup')}
+                        textColor={Color.white}
+                        bgColor={Color.semiGold}></FullButton>
+
                 </View>
             </View>
             <Image source={Images.saina}
@@ -49,13 +46,5 @@ const styles = StyleSheet.create({
         height: "50%", width: "100%",
         paddingVertical: "5%",
         justifyContent: "space-between"
-    },
-    button: {
-        width: "100%",
-        backgroundColor: Color.white,
-        borderRadius: 25,
-        justifyContent: "center",
-        alignItems: "center",
-        height: 45
     }
 })

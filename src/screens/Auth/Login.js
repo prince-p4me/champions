@@ -3,12 +3,21 @@ import {View, Text, TouchableOpacity, I18nManager} from 'react-native';
 import Header from '../../components/Header';
 import Colors from '../../utility/Color';
 import styles from '../../utility/Style';
-import {doLogin, setLoading} from '../../redux/action';
 import {useSelector, useDispatch} from 'react-redux';
 import Loader from '../../components/Loader';
 import * as Navigation from '../../navigation/navigation';
+import {doLogin, setLoading} from '../../redux/action';
+import {useSelector, useDispatch} from 'react-redux';
 
+import globalStyles from '../../utility/Style';
+import Images from '../../utility/Image';
+import Constant from '../../utility/Constant';
+import * as Navigation from '../../navigation/navigation';
 import i18n from 'i18n-js';
+import FullButton from '../../components/FullButton';
+import en from '../../translations/en.json';
+import hn from '../../translations/hn.json';
+import ur from '../../translations/ur.json';
 
 const LoginScreen = () => {
   const childRef = useRef();
