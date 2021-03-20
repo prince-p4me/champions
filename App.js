@@ -27,7 +27,7 @@ const App = () => {
             onReady={() => {
               isReadyRef.current = true;
             }}>
-            <StatusBar backgroundColor={Color.theme} barStyle="dark-content"></StatusBar>
+            <StatusBar backgroundColor={Color.theme} barStyle="light-content"></StatusBar>
             <StackNavigator />
             <Loader />
           </NavigationContainer>
