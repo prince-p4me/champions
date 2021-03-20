@@ -1,17 +1,14 @@
-import React, {useRef, useState} from 'react';
-import {View, Text, TouchableOpacity, I18nManager} from 'react-native';
+import React, { useRef, useState } from 'react';
+import { View, Text, TouchableOpacity, I18nManager } from 'react-native';
 import Header from '../../components/Header';
 import Colors from '../../utility/Color';
 import styles from '../../utility/Style';
-import {doLogin, setLoading} from '../../redux/action';
-import {useSelector, useDispatch} from 'react-redux';
+import { doLogin, setLoading } from '../../redux/action';
+import { useSelector, useDispatch } from 'react-redux';
 import Loader from '../../components/Loader';
 import * as Navigation from '../../navigation/navigation';
 
 import i18n from 'i18n-js';
-import en from '../../translations/en.json';
-import hn from '../../translations/hn.json';
-import ur from '../../translations/ur.json';
 
 const LoginScreen = () => {
   const setLanguageApp = (language) => {
@@ -23,24 +20,20 @@ const LoginScreen = () => {
   };
   const childRef = useRef();
   const [language, setLanguage] = useState('en');
-  i18n.locale = language;
-  i18n.fallbacks = true;
-  i18n.translations = {en, hn, ur};
   const list = useSelector((state) => state.videos.list);
   const dispatch = useDispatch();
 
-  console.log(i18n.t('getstarttedtext'));
   return (
     <View style={styles.container}>
       <Header title={i18n.t('login')} />
-      <View style={[styles.center, {justifyContent: 'center'}]}>
+      <View style={[styles.center, { justifyContent: 'center' }]}>
         <TouchableOpacity
           style={{
             backgroundColor: Colors.theme,
             padding: 10,
           }}
           onPress={() => dispatch(doLogin())}>
-          <Text style={{color: 'white'}}>{i18n.t('login')}</Text>
+          <Text style={{ color: 'white' }}>{i18n.t('login')}</Text>
         </TouchableOpacity>
 
         <View
@@ -66,7 +59,7 @@ const LoginScreen = () => {
               marginRight: 10,
             }}
             onPress={() => setLanguageApp('hn')}>
-            <Text style={{color: 'white'}}>Hindi</Text>
+            <Text style={{ color: 'white' }}>Hindi</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -76,7 +69,7 @@ const LoginScreen = () => {
               marginRight: 10,
             }}
             onPress={() => setLanguageApp('en')}>
-            <Text style={{color: 'white'}}>English</Text>
+            <Text style={{ color: 'white' }}>English</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -85,7 +78,7 @@ const LoginScreen = () => {
               padding: 10,
             }}
             onPress={() => setLanguageApp('ur')}>
-            <Text style={{color: 'white'}}>URDU</Text>
+            <Text style={{ color: 'white' }}>URDU</Text>
           </TouchableOpacity>
         </View>
       </View>
