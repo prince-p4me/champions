@@ -15,6 +15,8 @@ import FullButton from '../../components/FullButton';
 import en from '../../translations/en.json';
 import hn from '../../translations/hn.json';
 import ur from '../../translations/ur.json';
+import { TextRegular } from '../../components/TextView';
+import TextDevider from '../../components/TextDevider';
 
 const LoginScreen = () => {
   const [language, setLanguage] = useState('en');
@@ -34,14 +36,24 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={[styles.container, { padding: 14 }]}>
+    <View style={[styles.container, { padding: 14, backgroundColor: Colors.white }]}>
       <View style={{
         flex: 5,
       }}></View>
+      <TextDevider text={i18n.t("loginwith")}></TextDevider>
       <View style={{
-        flex: 5, backgroundColor: "red",
-        width: "100%"
-      }}></View>
+        flex: 5,
+        // backgroundColor: "red",
+        width: "100%",
+        justifyContent: "flex-end"
+      }}>
+        <TouchableOpacity style={{
+          width: "100%",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center"
+        }}></TouchableOpacity>
+      </View>
     </View>
   );
 };
