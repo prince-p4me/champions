@@ -16,14 +16,10 @@ const OtpScreen = ({route}) => {
     <View style={styles.container}>
       <SafeAreaView style={styles.safeArea}></SafeAreaView>
       <View style={styleLocal.headerText}>
-        <TextBold ellipsizeMode={'middle'} numberOfLines={1}>
-          {i18n.t('otplongtext')}
-        </TextBold>
+        <TextBold text={i18n.t('otplongtext')} ellipsizeMode={'middle'} />
       </View>
       <View style={styleLocal.otpSecondText}>
-        <TextBold ellipsizeMode={'middle'} numberOfLines={1}>
-          {i18n.t('otplongtext2')}
-        </TextBold>
+        <TextBold text={i18n.t('otplongtext2')} ellipsizeMode={'middle'} />
       </View>
       <OTPInputView
         style={{width: '80%', height: 200}}
@@ -46,17 +42,18 @@ const OtpScreen = ({route}) => {
             color: Color.black,
             fontSize: Sizes.large,
             fontWeight: '200',
-          }}>
-          {i18n.t('didntrecive')}
-        </TextLite>
+          }}
+          text={i18n.t('didntrecive')}
+        />
+
         <TextThin
           style={{
             color: Color.green,
             fontSize: Sizes.large,
             fontWeight: '600',
-          }}>
-          {i18n.t('click')}
-        </TextThin>
+          }}
+          text={i18n.t('click')}
+        />
       </View>
     </View>
   );
