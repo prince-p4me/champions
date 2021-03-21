@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { I18nManager } from 'react-native';
 import Home from '../screens/Dashboard/Home';
-import Detail from '../screens/Dashboard/Detail';
 import LoginScreen from '../screens/Auth/Login';
 import OtpScreen from '../screens/Auth/Otp';
 import SignUpOtp from '../screens/Auth/SignUpOtp';
@@ -22,6 +21,7 @@ const StackNavigator = () => {
   const user = useSelector((state) => state.getUser);
   const isRtl = useSelector((state) => state.isRtl);
   const language = useSelector((state) => state.getLanguage);
+  // const isRtl = true;
 
   useEffect(() => {
     console.log('language is ', language);
@@ -45,9 +45,9 @@ const StackNavigator = () => {
         </>
       ) : (
         <>
-          <Stack.Screen name="SignUp" component={SignUpScreen} />
           {/* <Stack.Screen name="Landing" component={LandingScreen} /> */}
           <Stack.Screen name="SignIn" component={LoginScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
           <Stack.Screen name="Otp" component={OtpScreen} />
           <Stack.Screen name="Otp2" component={SignUpOtp} />
         </>

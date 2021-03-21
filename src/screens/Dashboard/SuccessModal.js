@@ -8,27 +8,32 @@ import {
 } from 'react-native';
 import Colors from '../../utility/Color';
 import congrat from '../../assets/imgs/amazon.png';
-
-// import Icon from 'react-native-vector-icons/Feather';
-import {TextMedium, TextSemiBold} from '../../components/TextView';
+import Images from "../../utility/Image";
+import { TextMedium, TextSemiBold } from '../../components/TextView';
 import i18n from '../../services/i18n';
 import FullButton from '../../components/FullButton';
 import Sizes from '../../utility/Sizes';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-native-modal';
+import Clipboard from "@react-native-community/clipboard";
+import Toast from "react-native-simple-toast";
 
 const SuccessModal = (props) => {
-  const {visible, close} = props;
+  const { visible, close } = props;
   const isRtl = useSelector((state) => state.isRtl);
 
   return (
-    <Modal isVisible={visible} style={{margin: 0}}>
-      <View style={{flex: 1, backgroundColor: Colors.bgColor}}>
+    <Modal isVisible={visible} style={{ margin: 0 }}>
+      <View style={{ flex: 1, backgroundColor: Colors.bgColor }}>
         <View style={styles.firstSection}>
           <TouchableOpacity
-            style={[styles.closeBtn, isRtl ? {left: 20} : {right: 20}]}
+            style={[styles.closeBtn, isRtl ? { left: 20 } : { right: 20 }]}
             onPress={() => close()}>
-            {/* <Icon name="close" color={Colors.white} size={30}></Icon> */}
+            <Image source={Images.close} style={{
+              width: 30, height: 30,
+              tintColor: Colors.white,
+              resizeMode: "contain"
+            }}></Image>
           </TouchableOpacity>
           <Image
             source={congrat}
@@ -38,19 +43,23 @@ const SuccessModal = (props) => {
               borderRadius: 15,
             }}
             resizeMode="contain"></Image>
-          <View style={{width: '100%', alignItems: 'center'}}>
+          <View style={{ width: '100%', alignItems: 'center' }}>
             <TextMedium text={i18n.t('congrat')} style={styles.congrats} />
             <TextMedium text={i18n.t('won_points')} style={styles.congrats} />
             <View style={styles.congratsText}>
               <TextSemiBold
                 text="10,000"
-                style={[styles.congrats, {fontSize: Sizes.large}]}
+                style={[styles.congrats, { fontSize: Sizes.large }]}
               />
-              <View style={{width: 5}}></View>
-              {/* <Icon name="star" color={Colors.semiGold} size={18}></Icon> */}
+              <View style={{ width: 5 }}></View>
+              <Image source={Images.star} style={{
+                width: 15, height: 15,
+                tintColor: Colors.semiGold,
+                resizeMode: "contain"
+              }}></Image>
             </View>
           </View>
-          <View style={{width: '60%'}}>
+          <View style={{ width: '60%' }}>
             <FullButton
               text={i18n.t('go_redeem')}
               btnStyle={styles.outlineBtn}
@@ -64,25 +73,28 @@ const SuccessModal = (props) => {
         <View style={styles.secondSection}>
           <TextMedium
             text={i18n.t('earn_point')}
-            style={[styles.congrats, {color: Colors.black}]}
+            style={[styles.congrats, { color: Colors.black }]}
           />
 
-          <TouchableOpacity style={styles.dashButton}>
-            <View style={{flex: 1}}>
+          <TouchableOpacity style={styles.dashButton} onPress={async () => {
+            await Clipboard.getString("https://www.google.com/");
+            Toast.showWithGravity("Copied successfully . . .", Toast.LONG, Toast.BOTTOM);
+          }}>
+            <View style={{ flex: 1 }}>
               <TextMedium
                 text="https://www.google.com/"
-                style={[styles.congrats, {color: Colors.darkBGgray}]}
+                style={[styles.congrats, { color: Colors.darkBGgray }]}
               />
             </View>
             <View style={styles.copySection}>
               <TextMedium
                 text={i18n.t('copy')}
-                style={[styles.congrats, {color: 'blue'}]}
+                style={[styles.congrats, { color: 'blue' }]}
               />
             </View>
           </TouchableOpacity>
 
-          <View style={{width: '60%'}}>
+          <View style={{ width: '60%' }}>
             <FullButton
               text={i18n.t('go_reward')}
               bgColor={Colors.theme}

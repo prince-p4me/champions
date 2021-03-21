@@ -28,8 +28,8 @@ import ChangeLanguage from './ChangeLanguage';
 import { useSelector, useDispatch } from 'react-redux';
 
 const SignupScreen = () => {
-  const [mobile, setMobile] = useState('8285724681');
-  const [name, setName] = useState('Prince Kumar');
+  const [mobile, setMobile] = useState('');
+  const [name, setName] = useState('');
   const dispatch = useDispatch();
   let language = useSelector((state) => state.getLanguage);
 
