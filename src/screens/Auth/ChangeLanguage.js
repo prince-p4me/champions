@@ -10,7 +10,7 @@ import * as Actions from '../../redux/action';
 const languages = ['English', 'Hindi', 'Punjabi', 'Bangla', 'Urdu'];
 const langTypes = ['en', 'hn', 'pu', 'ba', 'ur'];
 import Toast from 'react-native-simple-toast';
-
+import RNRestart from 'react-native-restart';
 const ChangeLanguage = (props) => {
   const [langLabel, setLangLabel] = useState('English');
   const dropdownInput = useRef(null);
@@ -48,6 +48,10 @@ const ChangeLanguage = (props) => {
           I18n.locale = langTypes[langIndex];
           console.log('language changed ', language);
           // console.log('restarting');
+          setTimeout(() => {
+            RNRestart.Restart();
+          }, 2500);
+
           if (langTypes[langIndex] == 'ur') {
             Toast.showWithGravity(
               'Restart the App to apply RTL',
