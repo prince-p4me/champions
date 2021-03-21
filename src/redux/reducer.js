@@ -45,15 +45,6 @@ export const isLoading = (state = false, action) => {
   }
 };
 
-export const isLogin = (state = false, action) => {
-  switch (action.type) {
-    case Types.IS_LOGIN:
-      return action.payload;
-    default:
-      return state;
-  }
-}
-
 export const isRtl = (state = false, action) => {
   switch (action.type) {
     case Types.IS_RTL:
@@ -72,7 +63,7 @@ export const getLanguage = (state = "en", action) => {
   }
 }
 
-export const getUser = (state = user, action) => {
+export const getUser = (state = {}, action) => {
   switch (action.type) {
     case Types.USER:
       return action.payload;

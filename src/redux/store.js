@@ -9,7 +9,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // creating reducers
 const rootReducer = combineReducers({
   isLoading,
-  isLogin,
   getLanguage,
   isRtl,
   getBanners,
@@ -33,7 +32,7 @@ const persistConfig = {
   storage: AsyncStorage,
   // Whitelist (Save Specific Reducers)
   whitelist: [
-    "getLanguage", "isRtl", "isLogin"
+    "getLanguage", "isRtl", "getUser"
   ],
   blacklist: [],
   throttle: 1000,

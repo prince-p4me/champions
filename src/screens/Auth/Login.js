@@ -27,7 +27,7 @@ import ChangeLanguage from './ChangeLanguage';
 import Toast from 'react-native-simple-toast';
 
 const LoginScreen = () => {
-  const [mobile, setMobile] = useState('8285724681');
+  const [mobile, setMobile] = useState('');
   const dispatch = useDispatch();
   let language = useSelector((state) => state.getLanguage);
   const forceUpdate = React.useReducer((bool) => !bool)[1];

@@ -37,7 +37,6 @@ function* verifyOtp({ type, payload }) {
     yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
     if (response && response.status) {
       yield put({ type: Types.USER, payload: response }); //hide loading
-      yield put({ type: Types.IS_LOGIN, payload: true }); //hide loading
     }
   } catch (error) {
     console.log(error);
@@ -91,7 +90,6 @@ function* login({ type, payload }) {
       });
     }
     showResponse(response);
-    // yield put({ type: Types.IS_LOGIN, payload: true }); //set login true
 
     yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
   } catch (error) {
@@ -112,7 +110,6 @@ function* signUp({ type, payload }) {
       });
     }
     showResponse(response);
-    // yield put({ type: Types.IS_LOGIN, payload: true }); //set login true
 
     yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
   } catch (error) {
@@ -125,7 +122,6 @@ function* logOut({ type, payload }) {
   try {
     yield put({ type: Types.SET_LOADING, payload: true });
     yield put({ type: Types.USER, payload: {} });
-    yield put({ type: Types.IS_LOGIN, payload: false }); //hide loading
     yield put({ type: Types.SET_LOADING, payload: false });
     showResponse({ message: 'Logged out successfully . . .' });
     setTimeout(() => {
@@ -148,7 +144,6 @@ function* scanQr({ type, payload }) {
     yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
     // if (response && response.status) {
     //   yield put({ type: Types.USER, payload: response }); //hide loading
-    //   yield put({ type: Types.IS_LOGIN, payload: true }); //hide loading
     // }
   } catch (error) {
     console.log(error);
