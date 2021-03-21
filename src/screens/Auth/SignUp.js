@@ -17,6 +17,7 @@ import Images from '../../utility/Image';
 import Constant from '../../utility/Constant';
 import * as Navigation from '../../navigation/navigation';
 import I18n from '../../services/i18n';
+import i18n from '../../services/i18n';
 import FullButton from '../../components/FullButton';
 
 import { TextRegular, TextBold, TextSemiBold } from '../../components/TextView';
@@ -133,7 +134,7 @@ const SignupScreen = () => {
         <LinkButton
           text={I18n.t('alreay')}
           btnText={I18n.t('login')}
-          onPress={() => Navigation.navigate('SignUp')}
+          onPress={() => Navigation.goBack()}
         />
         <View style={{ height: 40 }}></View>
         <View
