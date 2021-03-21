@@ -1,4 +1,4 @@
-import {View, StyleSheet, Dimensions} from 'react-native';
+import { View, StyleSheet, Dimensions } from 'react-native';
 import Color from './Color';
 import Constant from './Constant';
 
@@ -93,7 +93,7 @@ export default StyleSheet.create({
     color: Color.white,
     letterSpacing: 1,
   },
-  safeArea: {backgroundColor: Color.theme, width: '100%'},
+  safeArea: { backgroundColor: Color.theme, width: '100%' },
   center: {
     width: '100%',
     flex: 1,
@@ -110,7 +110,7 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: Color.bgGray,
   },
-  sideIcon: {width: 28, height: 15, tintColor: Color.white},
+  sideIcon: { width: 28, height: 15, tintColor: Color.white },
   noData: {
     flex: 1,
     justifyContent: 'center',
@@ -159,13 +159,17 @@ export default StyleSheet.create({
     flexDirection: 'row',
     paddingStart: 40,
   },
-  profileIcon: {width: 40, height: 40},
+  profileIcon: {
+    width: 45, height: 45,
+    borderRadius: 20,
+  },
 
   rightHeaderIcon: {
-    width: 30,
-    height: 30,
+    width: 25,
+    height: 25,
+    resizeMode: "contain"
   },
-  helpSpacing: {paddingStart: 15, paddingEnd: 15},
+  helpSpacing: { paddingStart: 15, paddingEnd: 15 },
 
   starIcon: {
     width: 20,
@@ -181,7 +185,7 @@ export default StyleSheet.create({
   },
   pointTypesContainer: {
     backgroundColor: Color.white,
-    height: 185,
+    height: 175,
     borderRadius: 7,
     borderWidth: 1,
     borderColor: Color.darkBGgray,
@@ -196,14 +200,15 @@ export default StyleSheet.create({
   },
   pointTypeCol: {
     flexDirection: 'column',
-    borderRightWidth: 1,
-    borderColor: Color.darkBGgray,
     marginBottom: 20,
     marginTop: 10,
     marginStart: 10,
     alignItems: 'center',
   },
-  pointTypeColLast: {
+  pointTypeColMiddle: {
+    borderRightWidth: 1,
+    borderLeftWidth: 1,
+    borderColor: Color.darkBGgray,
     flexDirection: 'column',
     marginBottom: 20,
     marginTop: 10,
@@ -229,14 +234,14 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   qrIcon: {
-    height: 160,
-    width: 160,
+    height: 140,
+    width: 140,
   },
   slideImg: {
     width: 350,
   },
   slide: {
-    height: 300,
+    height: 200,
   },
   scrollViewContainerStyle: {
     alignContent: 'center',

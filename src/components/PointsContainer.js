@@ -20,7 +20,7 @@ const PointsContainer = () => {
       <View style={styles.pointContainer}>
         <TextBold
           text={i18n.t('points')}
-          style={{ textAlign: align, fontSize: Sizes.extraDouble }}
+          style={{ textAlign: align, fontSize: Sizes.large }}
         />
 
         <Image source={star} style={styles.starIcon}></Image>
@@ -31,33 +31,33 @@ const PointsContainer = () => {
           <Image source={earned} style={styles.pointIcon}></Image>
           <TextSemiBold
             text={20300}
-            style={{ textAlign: align, fontSize: Sizes.double }}
+            style={{ textAlign: align, fontSize: Sizes.semiLarge }}
           />
           <TextThin
             text={i18n.t('earned')}
-            style={{ textAlign: align, fontSize: Sizes.double }}
+            style={{ textAlign: align, fontSize: Sizes.semiLarge }}
           />
         </View>
-        <View style={styles.pointTypeCol}>
+        <View style={styles.pointTypeColMiddle}>
           <Image source={Redeem} style={styles.pointIcon}></Image>
           <TextSemiBold
             text={20300}
-            style={{ textAlign: align, fontSize: Sizes.double }}
+            style={{ textAlign: align, fontSize: Sizes.semiLarge }}
           />
           <TextThin
             text={i18n.t('redeem')}
-            style={{ textAlign: align, fontSize: Sizes.double }}
+            style={{ textAlign: align, fontSize: Sizes.semiLarge }}
           />
         </View>
-        <View style={styles.pointTypeColLast}>
+        <View style={styles.pointTypeCol}>
           <Image source={Balance} style={styles.pointIcon}></Image>
           <TextSemiBold
             text={20300}
-            style={{ textAlign: align, fontSize: Sizes.double }}
+            style={{ textAlign: align, fontSize: Sizes.semiLarge }}
           />
           <TextThin
             text={i18n.t('balance')}
-            style={{ textAlign: align, fontSize: Sizes.double }}
+            style={{ textAlign: align, fontSize: Sizes.semiLarge }}
           />
         </View>
       </View>

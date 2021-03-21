@@ -7,6 +7,7 @@ import {
   FlatList,
   TextInput,
   Dimensions,
+  ScrollView
 } from 'react-native';
 import Header from '../../components/Header';
 import Colors from '../../utility/Color';
@@ -53,7 +54,7 @@ const HomeScreen = () => {
   ];
 
   const [imgs, setSlideImgs] = useState(slideImgs);
-  const [visible, setModalVisible] = useState(true);
+  const [visible, setModalVisible] = useState(false);
 
   return (
     <View style={styles.containerDashboard}>
@@ -64,9 +65,11 @@ const HomeScreen = () => {
         }} />
 
       <Header title={'Home'} dashboard={true} />
-      <SliderImg slideImgs={imgs} />
-      <PointsContainer />
-      <QRCodeContainer />
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <SliderImg slideImgs={imgs} />
+        <PointsContainer />
+        <QRCodeContainer />
+      </ScrollView>
     </View>
   );
 };

@@ -10,9 +10,9 @@ import {
 import styles from '../utility/Style';
 import Constants from '../utility/Constant';
 import SideIcon from '../assets/imgs/arrow.png';
-import About from '../assets/imgs/About.png';
+import About from '../assets/imgs/user.jpeg';
 
-import Logout from '../assets/imgs/Log-out.png';
+import Logout from '../assets/imgs/home-logout.png';
 import Edit from '../assets/imgs/edit.png';
 import Help from '../assets/imgs/help.png';
 
@@ -20,11 +20,11 @@ import * as Navigation from '../navigation/navigation';
 import Color from '../utility/Color';
 
 const Header = (props) => {
-  const {title, back, dashboard} = props;
+  const { title, back, dashboard } = props;
 
   console.log('back', back);
   return (
-    <View style={{width: '100%'}}>
+    <View style={{ width: '100%' }}>
       <SafeAreaView style={styles.safeArea}></SafeAreaView>
       {!dashboard && (
         <View style={styles.header}>
@@ -47,7 +47,7 @@ const Header = (props) => {
             </View>
 
             <View style={styles.headerRightRow}>
-              <Image source={Edit} style={styles.rightHeaderIcon}></Image>
+              {/* <Image source={Edit} style={styles.rightHeaderIcon}></Image> */}
               <View style={styles.helpSpacing}>
                 <Image source={Help} style={styles.rightHeaderIcon}></Image>
               </View>

@@ -6,29 +6,28 @@ import i18n from '../services/i18n';
 
 import scan from '../assets/imgs/scan.png';
 import styles from '../utility/Style';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as Navigation from '../navigation/navigation';
+import Sizes from "../utility/Sizes";
 
 const QRCodeContainer = () => {
   return (
-    <View>
-      <View style={styles.qrContainer}>
-        <TouchableHighlight
-          onPress={() => {
-            Navigation.navigate('Scan');
-          }}>
-          <Image source={scan} style={styles.qrIcon}></Image>
-        </TouchableHighlight>
+    <View style={styles.qrContainer}>
+      <TouchableOpacity
+        onPress={() => {
+          Navigation.navigate('Scan');
+        }}>
+        <Image source={scan} style={styles.qrIcon}></Image>
+      </TouchableOpacity>
 
-        <TextBold
-          text={i18n.t('scanfor')}
-          style={{ textAlign: 'center', fontSize: Sizes.extraDouble }}
-        />
-        <TextThin
-          text={i18n.t('myreward')}
-          style={{ textAlign: 'center', fontSize: Sizes.extraDouble }}
-        />
-      </View>
+      <TextBold
+        text={i18n.t('scanfor')}
+        style={{ textAlign: 'center', fontSize: Sizes.large }}
+      />
+      <TextThin
+        text={i18n.t('myreward')}
+        style={{ textAlign: 'center', fontSize: Sizes.large }}
+      />
     </View>
   );
 };
