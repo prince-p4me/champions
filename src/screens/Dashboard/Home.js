@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -12,8 +12,8 @@ import {
 import Header from '../../components/Header';
 import Colors from '../../utility/Color';
 import styles from '../../utility/Style';
-import {doLogin, setLoading} from '../../redux/action';
-import {useSelector, useDispatch} from 'react-redux';
+import { doLogin, setLoading } from '../../redux/action';
+import { useSelector, useDispatch } from 'react-redux';
 import Loader from '../../components/Loader';
 import * as Navigation from '../../navigation/navigation';
 import SliderImg from '../../components/SliderImg';
@@ -27,7 +27,8 @@ import * as actions from '../../redux/action';
 import SuccessModal from './SuccessModal';
 
 const HomeScreen = () => {
-  // const list = useSelector((state) => state.getBanners);
+  const list = useSelector((state) => state.getBanners);
+  const user = useSelector((state) => state.getUser);
   // const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -67,7 +68,7 @@ const HomeScreen = () => {
       />
 
       <Header title={'Home'} dashboard={true} />
-      <ScrollView contentContainerStyle={{flexGrow: 1}}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <SliderImg slideImgs={imgs} />
         <PointsContainer />
         <QRCodeContainer />

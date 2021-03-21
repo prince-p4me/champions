@@ -1,18 +1,17 @@
 import React, {useRef, useState, useEffect} from 'react';
 import {
   View,
-  Text,
+  SafeAreaView,
   KeyboardAvoidingView,
   I18nManager,
   TextInput,
-  SafeAreaView,
 } from 'react-native';
 import Header from '../../components/Header';
 import Colors from '../../utility/Color';
 import styles from '../../utility/Style';
 import {useSelector, useDispatch} from 'react-redux';
 import Loader from '../../components/Loader';
-import {doLogin, setLoading} from '../../redux/action';
+import * as Actions from '../../redux/action';
 
 import Images from '../../utility/Image';
 import Constant from '../../utility/Constant';
@@ -25,11 +24,25 @@ import TextDevider from '../../components/TextDevider';
 import LinkButton from './LinkButton';
 import Sizes from '../../utility/Sizes';
 import ChangeLanguage from './ChangeLanguage';
+import Toast from 'react-native-simple-toast';
 
 const LoginScreen = () => {
-  const [mobile, setMobile] = useState('');
+  const [mobile, setMobile] = useState('8285724681');
+  const dispatch = useDispatch();
   let language = useSelector((state) => state.getLanguage);
   useEffect(() => {}, [language]);
+  const doLogin = () => {
+    if (!mobile || mobile.length < 10) {
+      Toast.showWithGravity(
+        'Enter valid mobile number',
+        Toast.SHORT,
+        Toast.BOTTOM,
+      );
+      return;
+    }
+    dispatch(Actions.doLogin(mobile));
+  };
+
   return (
     <View
       style={[styles.container, {padding: 14, backgroundColor: Colors.white}]}>
@@ -62,14 +75,12 @@ const LoginScreen = () => {
             keyboardType="phone-pad"
             value={mobile}
             onChangeText={(mobile) => setMobile(mobile)}
-            maxLength={10}></TextInput>
+            maxLength={10}
+            onSubmitEditing={doLogin}></TextInput>
         </View>
         <FullButton
           btnStyle={{width: Constant.width - 64, marginTop: 50}}
-          onPress={() => {
-            // Navigation.navigate('SignUp')
-            alert('sending otp');
-          }}
+          onPress={doLogin}
           text={I18n.t('Sendotp')}
           textColor={Colors.white}
           bgColor={Colors.theme}

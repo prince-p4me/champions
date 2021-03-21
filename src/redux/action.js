@@ -35,4 +35,11 @@ export function setLanguage(payload) {
   }
 }
 
+export function verifyOtp(payload) {
+  return {
+    type: Types.VERIFY_OTP,
+    payload
+  }
+}
+
 // add another actions further
