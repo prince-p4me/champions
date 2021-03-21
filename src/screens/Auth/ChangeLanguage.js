@@ -20,6 +20,7 @@ const ChangeLanguage = (props) => {
     console.log('language 1 is ', language);
     let index = langTypes.indexOf(language);
     console.log('language 2 is ', languages[index]);
+    setLangLabel(languages[index]);
     // setLangLabel(languages[index]);
   }, [language]);
 

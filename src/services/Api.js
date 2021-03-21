@@ -53,11 +53,6 @@ export function getBanners(body) {
   return callApi(Constants.API_URL + 'banner_list.php', body, 'GET');
 }
 
-export function getPoints(body) {
-  console.log('----------getPoints Api Call ------------------');
-  return callApi(Constants.API_URL + 'points.php', body, 'POST');
-}
-
 export function scanQr(body) {
   console.log('----------scanQr Api Call ------------------');
   return callApi(Constants.API_URL + 'scan_qr.php', body, 'POST');

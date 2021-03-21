@@ -6,10 +6,10 @@ import hn from '../translations/hn.json';
 import ur from '../translations/ur.json';
 import pu from '../translations/pu.json';
 import ba from '../translations/ba.json';
-import { store } from '../redux/store';
+import {store} from '../redux/store';
 
 const state = store.getState();
 I18n.fallbacks = true;
-I18n.translations = { en, hn, ur, pu, ba };
+I18n.translations = {en, hn, ur, pu, ba};
 
 export default I18n;
