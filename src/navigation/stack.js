@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {I18nManager} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { I18nManager } from 'react-native';
 import Home from '../screens/Dashboard/Home';
 import Detail from '../screens/Dashboard/Detail';
 import LoginScreen from '../screens/Auth/Login';
@@ -8,11 +8,11 @@ import OtpScreen from '../screens/Auth/Otp';
 import SignUpOtp from '../screens/Auth/SignUpOtp';
 import SignUpScreen from '../screens/Auth/SignUp';
 import LandingScreen from '../screens/Auth/Landing';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 import ScanQrCode from '../screens/ScanQrCode';
-import I18n from 'react-native-i18n';
-import {store} from '../redux/store';
+import I18n from '../services/i18n';
+import { store } from '../redux/store';
 
 const state = store.getState();
 const Stack = createStackNavigator();
