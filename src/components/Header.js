@@ -6,11 +6,14 @@ import {
   SafeAreaView,
   Text,
   Image,
+  BackHandler
 } from 'react-native';
 import styles from '../utility/Style';
 import Constants from '../utility/Constant';
 import SideIcon from '../assets/imgs/arrow.png';
 import About from '../assets/imgs/user.jpeg';
+import { useSelector, useDispatch } from 'react-redux';
+import * as Actions from '../redux/action';
 
 import Logout from '../assets/imgs/home-logout.png';
 import Edit from '../assets/imgs/edit.png';
@@ -21,7 +24,7 @@ import Color from '../utility/Color';
 
 const Header = (props) => {
   const { title, back, dashboard } = props;
-
+  const dispatch = useDispatch();
   console.log('back', back);
   return (
     <View style={{ width: '100%' }}>
@@ -51,7 +54,11 @@ const Header = (props) => {
               <View style={styles.helpSpacing}>
                 <Image source={Help} style={styles.rightHeaderIcon}></Image>
               </View>
-              <Image source={Logout} style={styles.rightHeaderIcon}></Image>
+              <TouchableOpacity onPress={() => {
+                dispatch(Actions.logOut());
+              }}>
+                <Image source={Logout} style={styles.rightHeaderIcon}></Image>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
