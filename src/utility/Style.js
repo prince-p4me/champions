@@ -251,4 +251,13 @@ export default StyleSheet.create({
     alignContent: 'center',
     backgroundColor: '#FFFFFF',
   },
+
+  congratIcon: {
+    height: 100,
+    width: 100,
+  },
+  starIconSuccess: {
+    width: 40,
+    height: 40,
+  },
 });

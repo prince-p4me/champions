@@ -5,7 +5,7 @@ import Sizes from '../utility/Sizes';
 import { TextBold, TextRegular } from './TextView';
 
 const FullButton = props => {
-  const { onPress, text, textColor, bgColor, btnStyle } = props;
+  const { onPress, text, textColor, textStyle, bgColor, btnStyle } = props;
 
   return (
     <TouchableOpacity style={[styles.button,
@@ -14,7 +14,13 @@ const FullButton = props => {
     ]} activeOpacity={.7}
       onPress={() => onPress()}>
       <TextBold text={text}
-        style={{ color: (textColor ? textColor : Color.theme), fontSize: Sizes.medium }} />
+        style={[
+          {
+            color: (textColor ? textColor : Color.theme),
+            fontSize: Sizes.medium
+          },
+          textStyle && textStyle
+        ]} />
     </TouchableOpacity>
   )
 }

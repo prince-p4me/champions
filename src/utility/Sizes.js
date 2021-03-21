@@ -7,5 +7,6 @@ export default Sizes = {
   extraLarge: 20,
   extraSmall: 8,
   double: 22,
-  extraDouble: 24
+  extraDouble: 24,
+  extraDouble2x: 40,
 };

@@ -12,12 +12,15 @@ import Sizes from "../utility/Sizes"
 import styles from '../utility/Style';
 
 const PointsContainer = () => {
+  const isRtl = useSelector((state) => state.isRtl);
+  const align = isRtl ? "right" : "left";
+
   return (
     <View>
       <View style={styles.pointContainer}>
         <TextBold
           text={i18n.t('points')}
-          style={{ textAlign: 'start', fontSize: Sizes.extraDouble }}
+          style={{ textAlign: align, fontSize: Sizes.extraDouble }}
         />
 
         <Image source={star} style={styles.starIcon}></Image>
@@ -28,33 +31,33 @@ const PointsContainer = () => {
           <Image source={earned} style={styles.pointIcon}></Image>
           <TextSemiBold
             text={20300}
-            style={{ textAlign: 'start', fontSize: Sizes.double }}
+            style={{ textAlign: align, fontSize: Sizes.double }}
           />
           <TextThin
             text={i18n.t('earned')}
-            style={{ textAlign: 'start', fontSize: Sizes.double }}
+            style={{ textAlign: align, fontSize: Sizes.double }}
           />
         </View>
         <View style={styles.pointTypeCol}>
           <Image source={Redeem} style={styles.pointIcon}></Image>
           <TextSemiBold
             text={20300}
-            style={{ textAlign: 'start', fontSize: Sizes.double }}
+            style={{ textAlign: align, fontSize: Sizes.double }}
           />
           <TextThin
             text={i18n.t('redeem')}
-            style={{ textAlign: 'start', fontSize: Sizes.double }}
+            style={{ textAlign: align, fontSize: Sizes.double }}
           />
         </View>
         <View style={styles.pointTypeColLast}>
           <Image source={Balance} style={styles.pointIcon}></Image>
           <TextSemiBold
             text={20300}
-            style={{ textAlign: 'start', fontSize: Sizes.double }}
+            style={{ textAlign: align, fontSize: Sizes.double }}
           />
           <TextThin
             text={i18n.t('balance')}
-            style={{ textAlign: 'start', fontSize: Sizes.double }}
+            style={{ textAlign: align, fontSize: Sizes.double }}
           />
         </View>
       </View>
