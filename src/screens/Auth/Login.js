@@ -30,7 +30,15 @@ const LoginScreen = () => {
   const [mobile, setMobile] = useState('8285724681');
   const dispatch = useDispatch();
   let language = useSelector((state) => state.getLanguage);
-  useEffect(() => { }, [language]);
+  const forceUpdate = React.useReducer((bool) => !bool)[1];
+
+  useEffect(() => {
+    setTimeout(() => {
+      I18n.locale = language;
+      forceUpdate();
+    }, 10);
+  }, [language]);
+
   const doLogin = () => {
     if (!mobile || mobile.length < 10) {
       Toast.showWithGravity(

@@ -24,7 +24,7 @@ const StackNavigator = () => {
 
   useEffect(() => {
     console.log('language is ', language);
-    I18n.locale = language;
+    // I18n.locale = language;
     I18nManager.allowRTL(isRtl);
     I18nManager.forceRTL(isRtl);
     SplashScreen.hide();

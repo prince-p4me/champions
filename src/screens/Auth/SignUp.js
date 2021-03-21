@@ -16,7 +16,7 @@ import * as Actions from '../../redux/action';
 import Images from '../../utility/Image';
 import Constant from '../../utility/Constant';
 import * as Navigation from '../../navigation/navigation';
-import i18n from '../../services/i18n';
+import I18n from '../../services/i18n';
 import FullButton from '../../components/FullButton';
 
 import { TextRegular, TextBold, TextSemiBold } from '../../components/TextView';
@@ -30,6 +30,16 @@ const SignupScreen = () => {
   const [mobile, setMobile] = useState('');
   const [name, setName] = useState('');
   const dispatch = useDispatch();
+  let language = useSelector((state) => state.getLanguage);
+
+  const forceUpdate = React.useReducer((bool) => !bool)[1];
+
+  useEffect(() => {
+    setTimeout(() => {
+      I18n.locale = language;
+      forceUpdate();
+    }, 10);
+  }, [language]);
 
   const signUp = () => {
     if (!mobile || mobile.length < 10) {
@@ -51,6 +61,7 @@ const SignupScreen = () => {
     dispatch(Actions.signUp({ name, mobile }));
   };
 
+
   return (
     <View
       style={[styles.container, { padding: 14, backgroundColor: Colors.white }]}>
@@ -65,12 +76,12 @@ const SignupScreen = () => {
           // backgroundColor: "red"
         }}>
         <TextBold
-          text={i18n.t('signup2')}
+          text={I18n.t('signup2')}
           style={{ textAlign: 'center', fontSize: Sizes.extraDouble }}
         />
 
         <TextRegular
-          text={i18n.t('Signuplongtext')}
+          text={I18n.t('Signuplongtext')}
           style={{ textAlign: 'center', fontSize: Sizes.regular, marginTop: 30 }}
         />
         <View style={[styles.inputBox, { paddingStart: 20 }]}>
@@ -110,7 +121,7 @@ const SignupScreen = () => {
         />
       </KeyboardAvoidingView>
 
-      {/* <TextDevider text={i18n.t('signupwith')}></TextDevider> */}
+      {/* <TextDevider text={I18n.t('signupwith')}></TextDevider> */}
 
       <View
         style={{
@@ -120,8 +131,8 @@ const SignupScreen = () => {
           justifyContent: 'flex-end',
         }}>
         <LinkButton
-          text={i18n.t('alreay')}
-          btnText={i18n.t('login')}
+          text={I18n.t('alreay')}
+          btnText={I18n.t('login')}
           onPress={() => Navigation.navigate('SignUp')}
         />
         <View style={{ height: 40 }}></View>
