@@ -8,4 +8,4 @@ export const GET_BANNERS = 'GET_BANNERS';
 export const BANNERS_LIST = 'BANNERS_LIST';
 export const VERIFY_OTP = 'VERIFY_OTP';
 export const USER = 'USER';
-export const GET_POINTS = 'GET_POINTS';
+export const LOG_OUT = 'LOG_OUT';

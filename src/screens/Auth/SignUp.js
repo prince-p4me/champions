@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -28,8 +28,9 @@ import ChangeLanguage from './ChangeLanguage';
 
 const SignupScreen = () => {
   const [mobile, setMobile] = useState('');
-  const [name, setName] = useState('');
+  let language = useSelector((state) => state.getLanguage);
 
+  useEffect(() => {}, [language]);
   return (
     <View
       style={[styles.container, {padding: 14, backgroundColor: Colors.white}]}>

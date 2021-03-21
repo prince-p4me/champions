@@ -42,4 +42,11 @@ export function verifyOtp(payload) {
   }
 }
 
+export function logOut(payload) {
+  return {
+    type: Types.LOG_OUT,
+    payload
+  }
+}
+
 // add another actions further

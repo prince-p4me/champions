@@ -55,7 +55,7 @@ const HomeScreen = () => {
   ];
 
   const [imgs, setSlideImgs] = useState(slideImgs);
-  const [visible, setModalVisible] = useState(true);
+  const [visible, setModalVisible] = useState(false);
 
   return (
     <View style={styles.containerDashboard}>

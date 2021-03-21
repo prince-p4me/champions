@@ -3,6 +3,7 @@ import * as Navigation from '../navigation/navigation';
 import * as Apiservice from '../services/Api';
 import * as Types from './types';
 import Toast from 'react-native-simple-toast';
+import {BackHandler} from 'react-native';
 
 function showResponse(response) {
   if (response && response.message) {
@@ -46,6 +47,7 @@ function* verifyOtp({type, payload}) {
     yield put({type: Types.SET_LOADING, payload: false}); //hide loading
   }
 }
+
 function* resendOtp({type, payload}) {
   try {
     yield put({type: Types.SET_LOADING, payload: true}); //show loading
@@ -95,6 +97,22 @@ function* login({type, payload}) {
   }
 }
 
+function* logOut({type, payload}) {
+  try {
+    yield put({type: Types.SET_LOADING, payload: true});
+    yield put({type: Types.USER, payload: {}});
+    yield put({type: Types.IS_LOGIN, payload: false}); //hide loading
+    yield put({type: Types.SET_LOADING, payload: false});
+    showResponse({message: 'Logged out successfully . . .'});
+    setTimeout(() => {
+      BackHandler.exitApp();
+    }, 1000);
+  } catch (error) {
+    console.log(error);
+    yield put({type: Types.SET_LOADING, payload: false});
+  }
+}
+
 // Watcher
 export default function* watcher() {
   // Take Last Action Only
@@ -102,5 +120,5 @@ export default function* watcher() {
   yield takeLatest(Types.RESEND_OTP, resendOtp);
   yield takeLatest(Types.GET_BANNERS, getBanners);
   yield takeLatest(Types.VERIFY_OTP, verifyOtp);
-  yield takeLatest(Types.GET_POINTS, getPoints);
+  yield takeLatest(Types.LOG_OUT, logOut);
 }
