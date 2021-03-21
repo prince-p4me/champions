@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -17,7 +17,7 @@ import {doLogin, setLoading} from '../../redux/action';
 import Images from '../../utility/Image';
 import Constant from '../../utility/Constant';
 import * as Navigation from '../../navigation/navigation';
-import i18n from '../../services/i18n';
+import I18n from '../../services/i18n';
 import FullButton from '../../components/FullButton';
 
 import {TextRegular, TextBold, TextSemiBold} from '../../components/TextView';
@@ -28,7 +28,8 @@ import ChangeLanguage from './ChangeLanguage';
 
 const LoginScreen = () => {
   const [mobile, setMobile] = useState('');
-
+  let language = useSelector((state) => state.getLanguage);
+  useEffect(() => {}, [language]);
   return (
     <View
       style={[styles.container, {padding: 14, backgroundColor: Colors.white}]}>
@@ -42,12 +43,12 @@ const LoginScreen = () => {
           paddingHorizontal: 16,
         }}>
         <TextBold
-          text={i18n.t('login')}
+          text={I18n.t('login')}
           style={{textAlign: 'center', fontSize: Sizes.extraDouble}}
         />
 
         <TextRegular
-          text={i18n.t('otplongtext2')}
+          text={I18n.t('otplongtext2')}
           style={{textAlign: 'center', fontSize: Sizes.regular, marginTop: 30}}
         />
 
@@ -69,13 +70,13 @@ const LoginScreen = () => {
             // Navigation.navigate('SignUp')
             alert('sending otp');
           }}
-          text={i18n.t('Sendotp')}
+          text={I18n.t('Sendotp')}
           textColor={Colors.white}
           bgColor={Colors.theme}
         />
       </KeyboardAvoidingView>
 
-      <TextDevider text={i18n.t('loginwith')}></TextDevider>
+      <TextDevider text={I18n.t('loginwith')}></TextDevider>
 
       <View
         style={{
@@ -84,8 +85,8 @@ const LoginScreen = () => {
           justifyContent: 'flex-end',
         }}>
         <LinkButton
-          text={i18n.t('doyouhaveac')}
-          btnText={i18n.t('signup2')}
+          text={I18n.t('doyouhaveac')}
+          btnText={I18n.t('signup2')}
           onPress={() => Navigation.navigate('SignUp')}
         />
         <View style={{height: 40}}></View>
@@ -98,7 +99,7 @@ const LoginScreen = () => {
             marginBottom: 20,
           }}>
           <TextSemiBold
-            text={i18n.t('chooselanguage')}
+            text={I18n.t('chooselanguage')}
             style={{marginEnd: 7}}
           />
 
