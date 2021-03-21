@@ -1,12 +1,36 @@
 import * as Types from './types';
+let user = {
+  "status": 1,
+  "message": "Login Successfully!!",
+  "id": "23",
+  "name": "Prince Kumar",
+  "email": "",
+  "mobile": "8285724681",
+  "birth_date": "",
+  "aadhaar_number": "",
+  "aadhaar_photo": "",
+  "profile_photo": ""
+};
+
+let points = {
+  "total_earned": "0",
+  "total_redeemed": "0",
+  "balance": 0
+};
 
 export const getBanners = (state = [], action) => {
   switch (action.type) {
     case Types.BANNERS_LIST:
-      return {
-        ...state,
-        list: action.payload,
-      };
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+export const getPoints = (state = points, action) => {
+  switch (action.type) {
+    case Types.POINTS:
+      return action.payload;
     default:
       return state;
   }
@@ -48,7 +72,7 @@ export const getLanguage = (state = "en", action) => {
   }
 }
 
-export const getUser = (state = {}, action) => {
+export const getUser = (state = user, action) => {
   switch (action.type) {
     case Types.USER:
       return action.payload;

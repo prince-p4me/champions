@@ -21,6 +21,20 @@ export function getBanners(payload) {
   };
 }
 
+export function getPoints(payload) {
+  return {
+    type: Types.GET_POINTS,
+    payload,
+  };
+}
+
+export function scanQr(payload) {
+  return {
+    type: Types.SCAN_QR,
+    payload,
+  };
+}
+
 export function setRtl(payload) {
   return {
     type: Types.IS_RTL,

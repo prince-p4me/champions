@@ -19,6 +19,7 @@ const Stack = createStackNavigator();
 
 const StackNavigator = () => {
   const isLogin = useSelector((state) => state.isLogin);
+  const user = useSelector((state) => state.getUser);
   const isRtl = useSelector((state) => state.isRtl);
   const language = useSelector((state) => state.getLanguage);
 
@@ -37,7 +38,7 @@ const StackNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      {isLogin ? (
+      {(user && user.id) ? (
         <>
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Detail" component={Detail} />

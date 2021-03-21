@@ -1,9 +1,12 @@
 import { delay, call, takeLatest, put } from 'redux-saga/effects';
 import * as Navigation from '../navigation/navigation';
 import * as Apiservice from '../services/Api';
+import * as Actions from './action';
 import * as Types from './types';
 import Toast from 'react-native-simple-toast';
 import { BackHandler } from 'react-native';
+import Constant from '../utility/Constant';
+import { store } from "./store";
 
 function showResponse(response) {
   if (response && response.message) {
@@ -13,16 +16,10 @@ function showResponse(response) {
 
 function* getPoints({ type, payload }) {
   try {
-    // Delay 4 Seconds
-    // Dispatch Action To Redux Store
-    console.log('payload', JSON.stringify(payload));
     yield put({ type: Types.SET_LOADING, payload: true }); //show loading
     let response = yield call(Apiservice.getPoints, { mobile: payload }); //calling Api
     yield put({ type: Types.POINTS, payload: response }); //hide loading
     yield put({ type: Types.SET_LOADING, payload: false });
-    // yield put({ type: Types.IS_LOGIN, payload: true }); //set login true
-
-    yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
   } catch (error) {
     yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
     console.log('error login', JSON.stringify(error));
@@ -66,10 +63,16 @@ function* resendOtp({ type, payload }) {
 function* getBanners({ type, payload }) {
   try {
     yield put({ type: Types.SET_LOADING, payload: true });
-    let response = yield call(Apiservice.getBanners, payload); //calling Api
-    console.log('response in saga', JSON.stringify(response));
-    yield put({ type: Types.BANNER_LIST, payload: response.data }); //hide loading
+    let response = yield call(Apiservice.getBanners); //calling Api
+    if (response && response.data) {
+      for (let i = 0; i < response.data.length; i++) {
+        response.data[i].imgUrl = Constant.IMAGE_URL + response.data[i].image;
+      }
+    }
+    // console.log('response in saga', JSON.stringify(response));
+    yield put({ type: Types.BANNERS_LIST, payload: response.data }); //hide loading
     yield put({ type: Types.SET_LOADING, payload: false });
+    store.dispatch(Actions.getPoints())
   } catch (error) {
     console.log(error);
     yield put({ type: Types.SET_LOADING, payload: false });
@@ -134,6 +137,25 @@ function* logOut({ type, payload }) {
   }
 }
 
+function* scanQr({ type, payload }) {
+  try {
+    yield put({ type: Types.SET_LOADING, payload: true }); //show loading
+
+    let response = yield call(Apiservice.scanQr, payload); //calling Api
+
+    console.log('response in saga', JSON.stringify(response));
+    showResponse(response);
+    yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
+    // if (response && response.status) {
+    //   yield put({ type: Types.USER, payload: response }); //hide loading
+    //   yield put({ type: Types.IS_LOGIN, payload: true }); //hide loading
+    // }
+  } catch (error) {
+    console.log(error);
+    yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
+  }
+}
+
 // Watcher
 export default function* watcher() {
   // Take Last Action Only
@@ -143,4 +165,6 @@ export default function* watcher() {
   yield takeLatest(Types.VERIFY_OTP, verifyOtp);
   yield takeLatest(Types.LOG_OUT, logOut);
   yield takeLatest(Types.SIGN_UP, signUp);
+  yield takeLatest(Types.GET_POINTS, getPoints);
+  yield takeLatest(Types.SCAN_QR, scanQr);
 }

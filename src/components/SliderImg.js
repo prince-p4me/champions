@@ -18,11 +18,11 @@ const itemWidth = slideWidth + itemHorizontalMargin * 2;
 
 const _renderItem = ({ item, index }) => {
   const { width } = Dimensions.get('window').width;
-
+  console.log("img url is", item.imgUrl);
   return (
     <View style={styles.slide}>
       <Image
-        source={item.img}
+        source={{ uri: item.imgUrl }}
         style={{ width: width, resizeMode: 'contain' }}></Image>
     </View>
   );
@@ -30,6 +30,7 @@ const _renderItem = ({ item, index }) => {
 
 const SliderImg = (props) => {
   const { slideImgs } = props;
+  // console.log("slideImgs", slideImgs);
   return (
     <View style={{ height: 170 }}>
       <Carousel

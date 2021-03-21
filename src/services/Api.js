@@ -1,4 +1,5 @@
 import Constants from '../utility/Constant';
+import { store } from "../redux/store";
 
 async function callApi(urlString, body, methodType) {
   console.log('-----------AXIOS  Api request is----------- ');
@@ -10,15 +11,19 @@ async function callApi(urlString, body, methodType) {
     'Content-Type': 'application/json',
   };
 
+  const options = {
+    method: methodType,
+    headers
+  };
+  if (methodType == 'POST' || methodType == 'PUT') {
+    options.body = {};
+    if (body) {
+      options.body = JSON.stringify(body);
+    }
+  }
+  console.log("options", options);
   try {
-    const response = await fetch(urlString, {
-      method: methodType,
-      headers,
-      body:
-        (methodType == 'POST' || methodType == 'PUT') && body
-          ? JSON.stringify(body)
-          : {},
-    });
+    const response = await fetch(urlString, options);
     const jsonResposne = await response.json();
     console.log('result :--', JSON.stringify(jsonResposne));
     return jsonResposne;
@@ -39,8 +44,12 @@ export function signUp(body) {
 }
 
 export function getPoints(body) {
+  const state = store.getState();
+  let obj = {
+    user_id: state.getUser.id
+  };
   console.log('----------Points Api Call ------------------');
-  return callApi(Constants.API_URL + 'points.php', body, 'POST');
+  return callApi(Constants.API_URL + 'points.php', obj, 'POST');
 }
 
 export function resendOtp(body) {
@@ -54,6 +63,8 @@ export function getBanners(body) {
 }
 
 export function scanQr(body) {
+  const state = store.getState();
+  body.user_id = state.getUser.id
   console.log('----------scanQr Api Call ------------------');
   return callApi(Constants.API_URL + 'scan_qr.php', body, 'POST');
 }

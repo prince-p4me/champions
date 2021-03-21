@@ -14,6 +14,7 @@ import styles from '../utility/Style';
 const PointsContainer = () => {
   const isRtl = useSelector((state) => state.isRtl);
   const align = isRtl ? "right" : "left";
+  const data = useSelector((state) => state.getPoints);
 
   return (
     <View>
@@ -30,7 +31,7 @@ const PointsContainer = () => {
         <View style={styles.pointTypeCol}>
           <Image source={earned} style={styles.pointIcon}></Image>
           <TextSemiBold
-            text={20300}
+            text={data.total_earned}
             style={{ textAlign: align, fontSize: Sizes.semiLarge }}
           />
           <TextThin
@@ -41,7 +42,7 @@ const PointsContainer = () => {
         <View style={styles.pointTypeColMiddle}>
           <Image source={Redeem} style={styles.pointIcon}></Image>
           <TextSemiBold
-            text={20300}
+            text={data.total_redeemed}
             style={{ textAlign: align, fontSize: Sizes.semiLarge }}
           />
           <TextThin
@@ -52,7 +53,7 @@ const PointsContainer = () => {
         <View style={styles.pointTypeCol}>
           <Image source={Balance} style={styles.pointIcon}></Image>
           <TextSemiBold
-            text={20300}
+            text={data.balance}
             style={{ textAlign: align, fontSize: Sizes.semiLarge }}
           />
           <TextThin
