@@ -11,7 +11,10 @@ import LandingScreen from '../screens/Auth/Landing';
 import {useSelector, useDispatch} from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 import ScanQrCode from '../screens/ScanQrCode';
+import I18n from 'react-native-i18n';
+import {store} from '../redux/store';
 
+const state = store.getState();
 const Stack = createStackNavigator();
 
 const StackNavigator = () => {
@@ -21,11 +24,12 @@ const StackNavigator = () => {
 
   useEffect(() => {
     console.log('language is ', language);
+    I18n.locale = language;
     I18nManager.allowRTL(isRtl);
     I18nManager.forceRTL(isRtl);
     SplashScreen.hide();
     console.log('Splashscreen hidden');
-  });
+  }, [language]);
 
   console.log('rendered');
   return (
