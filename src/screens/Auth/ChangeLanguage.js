@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   View,
   StyleSheet,
@@ -9,25 +9,27 @@ import {
 import DropDownPicker from 'react-native-dropdown-picker';
 import Icon from 'react-native-vector-icons/Feather';
 import ModalDropdown from 'react-native-modal-dropdown';
-import en from '../../translations/en.json';
-import hn from '../../translations/hn.json';
-import ur from '../../translations/ur.json';
-import pu from '../../translations/pu.json';
-import ba from '../../translations/ba.json';
 import i18n from 'i18n-js';
 import Colors from '../../utility/Color';
 import Sizes from '../../utility/Sizes';
-
+import { useSelector, useDispatch } from 'react-redux';
+import * as Actions from "../../redux/action";
+import RNRestart from "react-native-restart"
 const languages = ['English', 'Hindi', 'Punjabi', 'Bangla', 'Urdu'];
+const langTypes = ['en', 'hn', 'pu', 'ba', 'ur'];
 
 const ChangeLanguage = (props) => {
-  const [language, setLanguage] = useState('en');
   const [langLabel, setLangLabel] = useState('English');
   const dropdownInput = useRef(null);
+  const dispatch = useDispatch();
+  const language = useSelector((state) => state.getLanguage);
 
-  i18n.locale = language;
-  i18n.fallbacks = true;
-  i18n.translations = {en, hn, ur, pu, ba};
+  useEffect(() => {
+    console.log("language 1 is ", language);
+    let index = langTypes.indexOf(language);
+    console.log("language 2 is ", languages[index]);
+    setLangLabel(languages[index]);
+  }, [language]);
 
   return (
     <TouchableOpacity
@@ -36,19 +38,21 @@ const ChangeLanguage = (props) => {
         dropdownInput.current.show();
       }}>
       <ModalDropdown
-        dropdownStyle={{width: '50%'}}
-        dropdownTextStyle={{fontSize: Sizes.medium, color: Colors.black}}
-        textStyle={{fontSize: Sizes.medium, color: Colors.black}}
+        dropdownStyle={{ width: '50%' }}
+        dropdownTextStyle={{ fontSize: Sizes.medium, color: Colors.black }}
+        textStyle={{ fontSize: Sizes.medium, color: Colors.black }}
         ref={dropdownInput}
         options={languages}
-        style={{width: 60}}
+        style={{ width: 60 }}
         onSelect={(index) => {
-          let langTypes = ['en', 'hn', 'pu', 'ba', 'ur'];
           let langIndex = languages.findIndex(
             (lang) => lang === languages[index],
           );
-          setLanguage(langTypes[langIndex]);
-          setLangLabel(languages[index]);
+          // setLanguage(langTypes[langIndex]);
+          dispatch(Actions.setLanguage(langTypes[langIndex]));
+          console.log("language changed ", language);
+          console.log("restarting");
+          RNRestart.Restart();
         }}
         defaultValue={langLabel}
       />
@@ -56,7 +60,7 @@ const ChangeLanguage = (props) => {
         name="chevron-down"
         size={20}
         color={Colors.black}
-        style={{marginStart: 25}}
+        style={{ marginStart: 25 }}
       />
     </TouchableOpacity>
   );

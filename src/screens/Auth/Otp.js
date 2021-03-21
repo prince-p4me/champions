@@ -4,7 +4,7 @@ import GlobalStyles from '../../utility/Style';
 import * as Navigation from '../../navigation/navigation';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import Color from '../../utility/Color';
-import i18n from 'i18n-js';
+import i18n from '../../services/i18n';
 import Sizes from '../../utility/Sizes';
 import FullButton from '../../components/FullButton';
 import { TextBold, TextRegular } from '../../components/TextView';

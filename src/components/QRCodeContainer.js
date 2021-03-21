@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {View, Image} from 'react-native';
-import {TextBold, TextSemiBold, TextThin} from './TextView';
-import i18n from 'i18n-js';
+import React, { Component } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { View, Image } from 'react-native';
+import { TextBold, TextSemiBold, TextThin } from './TextView';
+import i18n from '../services/i18n';
 
 import scan from '../assets/imgs/scan.png';
 import styles from '../utility/Style';
-import {TouchableHighlight} from 'react-native-gesture-handler';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 import * as Navigation from '../navigation/navigation';
 
 const QRCodeContainer = () => {
@@ -22,11 +22,11 @@ const QRCodeContainer = () => {
 
         <TextBold
           text={i18n.t('scanfor')}
-          style={{textAlign: 'center', fontSize: Sizes.extraDouble}}
+          style={{ textAlign: 'center', fontSize: Sizes.extraDouble }}
         />
         <TextThin
           text={i18n.t('myreward')}
-          style={{textAlign: 'center', fontSize: Sizes.extraDouble}}
+          style={{ textAlign: 'center', fontSize: Sizes.extraDouble }}
         />
       </View>
     </View>

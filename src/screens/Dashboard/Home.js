@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import {
   View,
   Text,
@@ -10,11 +10,10 @@ import {
 import Header from '../../components/Header';
 import Colors from '../../utility/Color';
 import styles from '../../utility/Style';
-import {doLogin, setLoading} from '../../redux/action';
-import {useSelector, useDispatch} from 'react-redux';
+import { doLogin, setLoading } from '../../redux/action';
+import { useSelector, useDispatch } from 'react-redux';
 import Loader from '../../components/Loader';
 import * as Navigation from '../../navigation/navigation';
-
 import SliderImg from '../../components/SliderImg';
 
 import PointsContainer from '../../components/PointsContainer';

@@ -15,4 +15,18 @@ export function resendOtp(payload) {
 }
 
 
+export function setRtl(payload) {
+    return {
+        type: Types.IS_RTL,
+        payload
+    }
+}
+
+export function setLanguage(payload) {
+    return {
+        type: Types.LANGUAGE,
+        payload
+    }
+}
+
 // add another actions further

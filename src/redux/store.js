@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { getVideosList, isLoading, isLogin } from './reducer';
+import { getVideosList, isLoading, isLogin, getLanguage, isRtl } from './reducer';
 import getListSaga from './saga';
 import { all, fork } from 'redux-saga/effects';
 import createSagaMiddleware from 'redux-saga';
@@ -10,7 +10,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const rootReducer = combineReducers({
   videos: getVideosList,
   isLoading,
-  isLogin
+  isLogin,
+  getLanguage,
+  isRtl
 });
 
 //creating, applying sagas
@@ -31,6 +33,7 @@ const persistConfig = {
   storage: AsyncStorage,
   // Whitelist (Save Specific Reducers)
   whitelist: [
+    "getLanguage", "isRtl", "isLogin"
   ],
   blacklist: [],
   throttle: 1000,

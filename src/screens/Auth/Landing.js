@@ -5,7 +5,7 @@ import Images from '../../utility/Image';
 import Constant from '../../utility/Constant';
 import * as Navigation from '../../navigation/navigation';
 import Color from '../../utility/Color';
-import i18n from 'i18n-js';
+import i18n from '../../services/i18n';
 import FullButton from '../../components/FullButton';
 
 const LandingScreen = ({ route }) => {

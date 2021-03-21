@@ -34,3 +34,21 @@ export const isLogin = (state = false, action) => {
             return state;
     }
 }
+
+export const isRtl = (state = false, action) => {
+    switch (action.type) {
+        case Types.IS_RTL:
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+export const getLanguage = (state = "en", action) => {
+    switch (action.type) {
+        case Types.LANGUAGE:
+            return action.payload;
+        default:
+            return state;
+    }
+}
