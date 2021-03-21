@@ -47,3 +47,12 @@ export const getLanguage = (state = "en", action) => {
       return state;
   }
 }
+
+export const getUser = (state = {}, action) => {
+  switch (action.type) {
+    case Types.USER:
+      return action.payload;
+    default:
+      return state;
+  }
+}

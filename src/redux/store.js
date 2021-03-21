@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { getVideosList, isLoading, getBanners, isLogin, getLanguage, isRtl } from './reducer';
+import { getUser, isLoading, getBanners, isLogin, getLanguage, isRtl } from './reducer';
 import getListSaga from './saga';
 import { all, fork } from 'redux-saga/effects';
 import createSagaMiddleware from 'redux-saga';
@@ -12,7 +12,8 @@ const rootReducer = combineReducers({
   isLogin,
   getLanguage,
   isRtl,
-  getBanners
+  getBanners,
+  getUser
 });
 
 //creating, applying sagas
