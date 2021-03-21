@@ -9,6 +9,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import * as Actions from '../../redux/action';
 const languages = ['English', 'Hindi', 'Punjabi', 'Bangla', 'Urdu'];
 const langTypes = ['en', 'hn', 'pu', 'ba', 'ur'];
+import RNRestart from 'react-native-restart'; // Import package from node modules
 
 const ChangeLanguage = (props) => {
   const [langLabel, setLangLabel] = useState('English');
@@ -46,6 +47,9 @@ const ChangeLanguage = (props) => {
           I18n.locale = langTypes[langIndex];
           console.log('language changed ', language);
           console.log('restarting');
+          setTimeout(() => {
+            RNRestart.Restart();
+          }, 2500);
         }}
         defaultValue={langLabel}
       />
