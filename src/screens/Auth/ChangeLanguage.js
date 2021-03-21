@@ -2,14 +2,14 @@ import React, {useRef, useState, useEffect} from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import ModalDropdown from 'react-native-modal-dropdown';
-import I18n from 'react-native-i18n';
+import I18n from '../../services/i18n';
 import Colors from '../../utility/Color';
 import Sizes from '../../utility/Sizes';
 import {useSelector, useDispatch} from 'react-redux';
 import * as Actions from '../../redux/action';
 const languages = ['English', 'Hindi', 'Punjabi', 'Bangla', 'Urdu'];
 const langTypes = ['en', 'hn', 'pu', 'ba', 'ur'];
-import RNRestart from 'react-native-restart'; // Import package from node modules
+import Toast from 'react-native-simple-toast';
 
 const ChangeLanguage = (props) => {
   const [langLabel, setLangLabel] = useState('English');
@@ -44,12 +44,17 @@ const ChangeLanguage = (props) => {
           );
           // setLanguage(langTypes[langIndex]);
           dispatch(Actions.setLanguage(langTypes[langIndex]));
+          dispatch(Actions.setRtl(langTypes[langIndex] == 'ur'));
           I18n.locale = langTypes[langIndex];
           console.log('language changed ', language);
-          console.log('restarting');
-          setTimeout(() => {
-            RNRestart.Restart();
-          }, 2500);
+          // console.log('restarting');
+          if (langTypes[langIndex] == 'ur') {
+            Toast.showWithGravity(
+              'Restart the App to apply RTL',
+              Toast.SHORT,
+              Toast.BOTTOM,
+            );
+          }
         }}
         defaultValue={langLabel}
       />
