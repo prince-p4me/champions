@@ -15,7 +15,7 @@ import { useSelector, useDispatch } from 'react-redux';
 const OtpScreen = props => {
   const dispatch = useDispatch();
   const [code, setCode] = useState("");
-  const { mobile, isLogin, name } = props.route.params;
+  const { mobile, login: isLogin, name } = props.route.params;
   console.log("mobile", mobile);
   console.log("isLogin", isLogin);
   console.log("name", name);
@@ -29,7 +29,7 @@ const OtpScreen = props => {
       />
 
       <TextRegular
-        text={i18n.t('otplongtext2')}
+        text={i18n.t(isLogin ? 'otplongtext2' : 'otplongtext3')}
         style={{ textAlign: 'center', fontSize: Sizes.regular, marginTop: 30 }}
       />
       <OTPInputView
@@ -47,11 +47,12 @@ const OtpScreen = props => {
             // Navigation.navigate('SignUp');
             const obj = {
               mobile,
+              name,
               otp: code
             };
             dispatch(Actions.verifyOtp(obj));
           }}
-          text={i18n.t('login')}
+          text={i18n.t(isLogin ? 'login' : 'signup2')}
           textColor={Color.white}
           bgColor={Color.theme}
         />

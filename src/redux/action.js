@@ -49,4 +49,11 @@ export function logOut(payload) {
   }
 }
 
+export function signUp(payload) {
+  return {
+    type: Types.SIGN_UP,
+    payload
+  }
+}
+
 // add another actions further
