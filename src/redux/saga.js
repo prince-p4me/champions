@@ -65,7 +65,7 @@ function* getBanners({ type, payload }) {
     let response = yield call(Apiservice.getBanners); //calling Api
     if (response && response.data) {
       for (let i = 0; i < response.data.length; i++) {
-        response.data[i].imgUrl = Constant.IMAGE_URL + response.data[i].image;
+        response.data[i].image = Constant.IMAGE_URL + response.data[i].image;
       }
     }
     // console.log('response in saga', JSON.stringify(response));
