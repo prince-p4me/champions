@@ -46,7 +46,7 @@ const OtpScreen = props => {
           onPress={() => {
             // Navigation.navigate('SignUp');
             const obj = {
-              mobile,
+              mobile: isLogin ? mobile : mobile.mobile,
               name,
               otp: code
             };
@@ -65,7 +65,7 @@ const OtpScreen = props => {
           let obj = {
             mobile,
           };
-          dispatch(Actions.resendOtp(obj));
+          dispatch(Actions.resendOtp(isLogin ? obj : mobile));
         }}
       />
     </View>

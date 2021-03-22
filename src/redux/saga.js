@@ -101,7 +101,7 @@ function* login({ type, payload }) {
 function* signUp({ type, payload }) {
   try {
     yield put({ type: Types.SET_LOADING, payload: true }); //show loading
-    let response = yield call(Apiservice.signUp, { mobile: payload }); //calling Api
+    let response = yield call(Apiservice.signUp, payload); //calling Api
     if (response && response.status) {
       Navigation.navigate('Otp', {
         mobile: payload,

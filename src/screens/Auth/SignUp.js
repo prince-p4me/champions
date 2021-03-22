@@ -95,7 +95,6 @@ const SignupScreen = () => {
             keyboardType="default"
             value={name}
             onChangeText={(name) => setName(name)}
-            maxLength={10}
             returnKeyType="next"></TextInput>
         </View>
         <View style={[styles.inputBox, { marginTop: 15 }]}>
