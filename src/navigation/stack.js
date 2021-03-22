@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { I18nManager } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
+import {I18nManager} from 'react-native';
 import Home from '../screens/Dashboard/Home';
 import LoginScreen from '../screens/Auth/Login';
 import OtpScreen from '../screens/Auth/Otp';
 import SignUpScreen from '../screens/Auth/SignUp';
 import LandingScreen from '../screens/Auth/Landing';
-import { useSelector, useDispatch } from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 import ScanQrCode from '../screens/Dashboard/ScanQrCode';
 
@@ -33,7 +33,7 @@ const StackNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      {(user && user.id) ? (
+      {user && user.id ? (
         <>
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Scan" component={ScanQrCode} />

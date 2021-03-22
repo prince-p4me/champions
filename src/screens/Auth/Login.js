@@ -1,15 +1,16 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {
   View,
   SafeAreaView,
   KeyboardAvoidingView,
   I18nManager,
   TextInput,
+  Keyboard,
 } from 'react-native';
 import Header from '../../components/Header';
 import Colors from '../../utility/Color';
 import styles from '../../utility/Style';
-import { useSelector, useDispatch } from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import Loader from '../../components/Loader';
 import * as Actions from '../../redux/action';
 
@@ -19,7 +20,7 @@ import * as Navigation from '../../navigation/navigation';
 import I18n from '../../services/i18n';
 import FullButton from '../../components/FullButton';
 
-import { TextRegular, TextBold, TextSemiBold } from '../../components/TextView';
+import {TextRegular, TextBold, TextSemiBold} from '../../components/TextView';
 import TextDevider from '../../components/TextDevider';
 import LinkButton from './LinkButton';
 import Sizes from '../../utility/Sizes';
@@ -46,6 +47,7 @@ const LoginScreen = () => {
         Toast.SHORT,
         Toast.BOTTOM,
       );
+      Keyboard.dismiss();
       return;
     }
     dispatch(Actions.doLogin(mobile));
@@ -53,8 +55,8 @@ const LoginScreen = () => {
 
   return (
     <View
-      style={[styles.container, { padding: 14, backgroundColor: Colors.white }]}>
-      <SafeAreaView style={{ backgroundColor: Colors.theme }}></SafeAreaView>
+      style={[styles.container, {padding: 14, backgroundColor: Colors.white}]}>
+      <SafeAreaView style={{backgroundColor: Colors.theme}}></SafeAreaView>
       <KeyboardAvoidingView
         behavior="position"
         style={{
@@ -65,12 +67,12 @@ const LoginScreen = () => {
         }}>
         <TextBold
           text={I18n.t('login')}
-          style={{ textAlign: 'center', fontSize: Sizes.extraDouble }}
+          style={{textAlign: 'center', fontSize: Sizes.extraDouble}}
         />
 
         <TextRegular
           text={I18n.t('otplongtext2')}
-          style={{ textAlign: 'center', fontSize: Sizes.regular, marginTop: 30 }}
+          style={{textAlign: 'center', fontSize: Sizes.regular, marginTop: 30}}
         />
 
         <View style={styles.inputBox}>
@@ -78,7 +80,7 @@ const LoginScreen = () => {
             <TextSemiBold text="+91-" />
           </View>
           <TextInput
-            style={{ flex: 1, padding: 7 }}
+            style={{flex: 1, padding: 7}}
             placeholder="Enter your 10 digits mobile number"
             keyboardType="phone-pad"
             value={mobile}
@@ -87,7 +89,7 @@ const LoginScreen = () => {
             onSubmitEditing={doLogin}></TextInput>
         </View>
         <FullButton
-          btnStyle={{ width: Constant.width - 64, marginTop: 50 }}
+          btnStyle={{width: Constant.width - 64, marginTop: 50}}
           onPress={doLogin}
           text={I18n.t('Sendotp')}
           textColor={Colors.white}
@@ -108,7 +110,7 @@ const LoginScreen = () => {
           btnText={I18n.t('signup2')}
           onPress={() => Navigation.navigate('SignUp')}
         />
-        <View style={{ height: 40 }}></View>
+        <View style={{height: 40}}></View>
         <View
           style={{
             width: '100%',
@@ -119,7 +121,7 @@ const LoginScreen = () => {
           }}>
           <TextSemiBold
             text={I18n.t('chooselanguage')}
-            style={{ marginEnd: 7 }}
+            style={{marginEnd: 7}}
           />
 
           <ChangeLanguage />

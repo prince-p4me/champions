@@ -1,67 +1,69 @@
-import { delay, call, takeLatest, put } from 'redux-saga/effects';
+import {delay, call, takeLatest, put} from 'redux-saga/effects';
 import * as Navigation from '../navigation/navigation';
 import * as Apiservice from '../services/Api';
 import * as Actions from './action';
 import * as Types from './types';
 import Toast from 'react-native-simple-toast';
-import { BackHandler } from 'react-native';
+import {BackHandler} from 'react-native';
 import Constant from '../utility/Constant';
-import { store } from "./store";
+import {store} from './store';
 
 function showResponse(response) {
   if (response && response.message) {
-    Toast.showWithGravity(response.message, Toast.SHORT, Toast.BOTTOM);
+    setTimeout(() => {
+      Toast.showWithGravity(response.message, Toast.SHORT, Toast.BOTTOM);
+    }, 1500);
   }
 }
 
-function* getPoints({ type, payload }) {
+function* getPoints({type, payload}) {
   try {
-    yield put({ type: Types.SET_LOADING, payload: true }); //show loading
-    let response = yield call(Apiservice.getPoints, { mobile: payload }); //calling Api
-    yield put({ type: Types.POINTS, payload: response }); //hide loading
-    yield put({ type: Types.SET_LOADING, payload: false });
+    yield put({type: Types.SET_LOADING, payload: true}); //show loading
+    let response = yield call(Apiservice.getPoints, {mobile: payload}); //calling Api
+    yield put({type: Types.POINTS, payload: response}); //hide loading
+    yield put({type: Types.SET_LOADING, payload: false});
   } catch (error) {
-    yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
+    yield put({type: Types.SET_LOADING, payload: false}); //hide loading
     console.log('error login', JSON.stringify(error));
   }
 }
 
-function* verifyOtp({ type, payload }) {
+function* verifyOtp({type, payload}) {
   try {
-    yield put({ type: Types.SET_LOADING, payload: true }); //show loading
+    yield put({type: Types.SET_LOADING, payload: true}); //show loading
 
     let response = yield call(Apiservice.verifyOtp, payload); //calling Api
 
     console.log('response in saga', JSON.stringify(response));
     showResponse(response);
-    yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
+    yield put({type: Types.SET_LOADING, payload: false}); //hide loading
     if (response && response.status) {
-      yield put({ type: Types.USER, payload: response }); //hide loading
+      yield put({type: Types.USER, payload: response}); //hide loading
     }
   } catch (error) {
     console.log(error);
-    yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
+    yield put({type: Types.SET_LOADING, payload: false}); //hide loading
   }
 }
 
-function* resendOtp({ type, payload }) {
+function* resendOtp({type, payload}) {
   try {
-    yield put({ type: Types.SET_LOADING, payload: true }); //show loading
+    yield put({type: Types.SET_LOADING, payload: true}); //show loading
 
     let response = yield call(Apiservice.resendOtp, payload); //calling Api
 
     console.log('response in saga', JSON.stringify(response));
     showResponse(response);
-    yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
+    yield put({type: Types.SET_LOADING, payload: false}); //hide loading
   } catch (error) {
     console.log(error);
-    yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
+    yield put({type: Types.SET_LOADING, payload: false}); //hide loading
   }
 }
 
-function* getBanners({ type, payload }) {
+function* getBanners({type, payload}) {
   try {
-    yield put({ type: Types.SET_LOADING, payload: true });
+    yield put({type: Types.SET_LOADING, payload: true});
     let response = yield call(Apiservice.getBanners); //calling Api
     if (response && response.data) {
       for (let i = 0; i < response.data.length; i++) {
@@ -69,19 +71,19 @@ function* getBanners({ type, payload }) {
       }
     }
     // console.log('response in saga', JSON.stringify(response));
-    yield put({ type: Types.BANNERS_LIST, payload: response.data }); //hide loading
-    yield put({ type: Types.SET_LOADING, payload: false });
+    yield put({type: Types.BANNERS_LIST, payload: response.data}); //hide loading
+    yield put({type: Types.SET_LOADING, payload: false});
     store.dispatch(Actions.getPoints());
   } catch (error) {
     console.log(error);
-    yield put({ type: Types.SET_LOADING, payload: false });
+    yield put({type: Types.SET_LOADING, payload: false});
   }
 }
 
-function* login({ type, payload }) {
+function* login({type, payload}) {
   try {
-    yield put({ type: Types.SET_LOADING, payload: true }); //show loading
-    let response = yield call(Apiservice.loginApi, { mobile: payload }); //calling Api
+    yield put({type: Types.SET_LOADING, payload: true}); //show loading
+    let response = yield call(Apiservice.loginApi, {mobile: payload}); //calling Api
     if (response && response.status) {
       Navigation.navigate('Otp', {
         mobile: payload,
@@ -91,18 +93,18 @@ function* login({ type, payload }) {
     }
     showResponse(response);
 
-    yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
+    yield put({type: Types.SET_LOADING, payload: false}); //hide loading
   } catch (error) {
-    yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
+    yield put({type: Types.SET_LOADING, payload: false}); //hide loading
     console.log('error login', JSON.stringify(error));
   }
 }
 
-function* signUp({ type, payload }) {
+function* signUp({type, payload}) {
   try {
-    yield put({ type: Types.SET_LOADING, payload: true }); //show loading
+    yield put({type: Types.SET_LOADING, payload: true}); //show loading
     let response = yield call(Apiservice.signUp, payload); //calling Api
-    yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
+    yield put({type: Types.SET_LOADING, payload: false}); //hide loading
     showResponse(response);
     Navigation.navigate('Otp', {
       mobile: payload,
@@ -110,42 +112,42 @@ function* signUp({ type, payload }) {
       login: false,
     });
   } catch (error) {
-    yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
+    yield put({type: Types.SET_LOADING, payload: false}); //hide loading
     console.log('error login', JSON.stringify(error));
   }
 }
 
-function* logOut({ type, payload }) {
+function* logOut({type, payload}) {
   try {
-    yield put({ type: Types.SET_LOADING, payload: true });
-    yield put({ type: Types.USER, payload: {} });
-    yield put({ type: Types.SET_LOADING, payload: false });
-    showResponse({ message: 'Logged out successfully . . .' });
+    yield put({type: Types.SET_LOADING, payload: true});
+    yield put({type: Types.USER, payload: {}});
+    yield put({type: Types.SET_LOADING, payload: false});
+    showResponse({message: 'Logged out successfully . . .'});
     setTimeout(() => {
       BackHandler.exitApp();
     }, 1000);
   } catch (error) {
     console.log(error);
-    yield put({ type: Types.SET_LOADING, payload: false });
+    yield put({type: Types.SET_LOADING, payload: false});
   }
 }
 
-function* scanQr({ type, payload }) {
+function* scanQr({type, payload}) {
   try {
-    yield put({ type: Types.SET_LOADING, payload: true }); //show loading
+    yield put({type: Types.SET_LOADING, payload: true}); //show loading
 
     let response = yield call(Apiservice.scanQr, payload); //calling Api
 
     console.log('response in saga', JSON.stringify(response));
     showResponse(response);
-    yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
+    yield put({type: Types.SET_LOADING, payload: false}); //hide loading
     if (response && response.status) {
-      store.dispatch(Actions.getPoints())
+      store.dispatch(Actions.getPoints());
       store.dispatch(Actions.setSuccessModal(true));
     }
   } catch (error) {
     console.log(error);
-    yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
+    yield put({type: Types.SET_LOADING, payload: false}); //hide loading
   }
 }
 
