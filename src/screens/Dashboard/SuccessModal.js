@@ -4,6 +4,7 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
+  ImageBackground,
   // Modal
 } from 'react-native';
 import Colors from '../../utility/Color';
@@ -61,20 +62,22 @@ const SuccessModal = (props) => {
             style={[styles.closeBtn, isRtl ? { left: 20 } : { right: 20 }]} >
             <Image source={Images.close} style={styles.closeImage}></Image>
           </TouchableOpacity>
-          <Image source={congrat} style={styles.congratImage} resizeMode="contain"></Image>
-          <View style={{ width: '100%', alignItems: 'center' }}>
-            <TextMedium text={i18n.t('congrat')} style={styles.congrats} />
-            <TextMedium text={i18n.t('won_points')} style={styles.congrats} />
-            <View style={styles.congratsText}>
-              <TextSemiBold text={points} style={[styles.congrats, { fontSize: Sizes.large }]} />
-              <View style={{ width: 5 }}></View>
-              <Image source={Images.star} style={styles.starImage}></Image>
+          <ImageBackground source={Images.gift} resizeMode="contain"
+            style={{ width: "100%", height: 250, justifyContent: "flex-end" }}>
+            <View style={{ width: '100%', alignItems: 'center', position: "absolute", bottom: -70 }}>
+              <TextMedium text={i18n.t('congrat')} style={styles.congrats} />
+              <TextMedium text={i18n.t('won_points')} style={styles.congrats} />
+              <View style={styles.congratsText}>
+                <TextSemiBold text={points} style={[styles.congrats, { fontSize: Sizes.double }]} />
+                <View style={{ width: 5 }}></View>
+                <Image source={Images.star} style={styles.starImage}></Image>
+              </View>
             </View>
-          </View>
-          <View style={{ width: '60%' }}>
+          </ImageBackground>
+          <View style={{ flex: 1, width: '60%', justifyContent: "center" }}>
             <FullButton
               text={i18n.t('go_redeem')}
-              btnStyle={styles.outlineBtn}
+              btnStyle={[styles.outlineBtn, { position: "absolute", bottom: 60 }]}
               textStyle={styles.outlineBtnText}
               onPress={() => {
                 console.log('going to redeem history');
@@ -111,14 +114,14 @@ const styles = StyleSheet.create({
     resizeMode: "contain"
   },
   starImage: {
-    width: 15, height: 15,
+    width: 20, height: 20,
     tintColor: Colors.semiGold,
     resizeMode: "contain"
   },
   congratImage: {
     width: 100,
-    height: 70,
-    borderRadius: 15,
+    height: 150,
+    // borderRadius: 15,
   },
   closeBtn: {
     position: 'absolute',
@@ -128,7 +131,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.green,
     flex: 7,
     alignItems: 'center',
-    justifyContent: 'space-evenly',
+    // justifyContent: 'space-between',
     borderBottomRightRadius: 30,
     borderBottomLeftRadius: 30,
   },
