@@ -142,9 +142,9 @@ function* scanQr({ type, payload }) {
     console.log('response in saga', JSON.stringify(response));
     showResponse(response);
     yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
-    // if (response && response.status) {
-    //   yield put({ type: Types.USER, payload: response }); //hide loading
-    // }
+    if (response && response.status) {
+      store.dispatch(Actions.getPoints())
+    }
   } catch (error) {
     console.log(error);
     yield put({ type: Types.SET_LOADING, payload: false }); //hide loading

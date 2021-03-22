@@ -13,11 +13,21 @@ import QRCodeContainer from '../../components/QRCodeContainer';
 import * as actions from '../../redux/action';
 import SuccessModal from './SuccessModal';
 
-const HomeScreen = () => {
+const HomeScreen = props => {
   const list = useSelector((state) => state.getBanners);
   const dispatch = useDispatch();
+  if (props.route.params && props.route.params.data) {
+    let { data } = props.route.params;
+    console.log("scan data", data);
+    console.log("executing data");
+    data = data.split(",");
+    console.log("scan data array", data);
+    let obj = { "qr_id": data[0], "points": data[1] };
+    dispatch(actions.scanQr(obj));
+  }
 
   useEffect(() => {
+
     dispatch(actions.getBanners());
   }, []);
 
