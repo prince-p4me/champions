@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
   closeBtn: {
     position: 'absolute',
     top: 20,
+    zIndex: 100
   },
   firstSection: {
     backgroundColor: Colors.green,
