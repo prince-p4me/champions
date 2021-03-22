@@ -24,6 +24,35 @@ const SuccessModal = (props) => {
   const isRtl = useSelector((state) => state.isRtl);
   const dispatch = useDispatch();
 
+  const renderRefer = () => {
+    return (
+      <>
+        <TextMedium
+          text={i18n.t('earn_point')}
+          style={[styles.congrats, { color: Colors.black }]}
+        />
+
+        <TouchableOpacity style={styles.dashButton} onPress={async () => {
+          await Clipboard.getString("https://www.google.com/");
+          Toast.showWithGravity("Copied successfully . . .", Toast.LONG, Toast.BOTTOM);
+        }}>
+          <View style={{ flex: 1 }}>
+            <TextMedium
+              text="https://www.google.com/"
+              style={[styles.congrats, { color: Colors.darkBGgray }]}
+            />
+          </View>
+          <View style={styles.copySection}>
+            <TextMedium
+              text={i18n.t('copy')}
+              style={[styles.congrats, { color: 'blue' }]}
+            />
+          </View>
+        </TouchableOpacity>
+      </>
+    )
+  }
+
   return (
     <Modal isVisible={visible} style={{ margin: 0 }}>
       <View style={{ flex: 1, backgroundColor: Colors.bgColor }}>
@@ -49,33 +78,14 @@ const SuccessModal = (props) => {
               textStyle={styles.outlineBtnText}
               onPress={() => {
                 console.log('going to redeem history');
-                close();
+                // close();
+                dispatch(Actions.setSuccessModal(false))
               }}></FullButton>
           </View>
         </View>
         <View style={styles.secondSection}>
-          <TextMedium
-            text={i18n.t('earn_point')}
-            style={[styles.congrats, { color: Colors.black }]}
-          />
 
-          <TouchableOpacity style={styles.dashButton} onPress={async () => {
-            await Clipboard.getString("https://www.google.com/");
-            Toast.showWithGravity("Copied successfully . . .", Toast.LONG, Toast.BOTTOM);
-          }}>
-            <View style={{ flex: 1 }}>
-              <TextMedium
-                text="https://www.google.com/"
-                style={[styles.congrats, { color: Colors.darkBGgray }]}
-              />
-            </View>
-            <View style={styles.copySection}>
-              <TextMedium
-                text={i18n.t('copy')}
-                style={[styles.congrats, { color: 'blue' }]}
-              />
-            </View>
-          </TouchableOpacity>
+          {/* {renderRefer()} */}
 
           <View style={{ width: '60%' }}>
             <FullButton
@@ -84,7 +94,8 @@ const SuccessModal = (props) => {
               textStyle={styles.outlineBtnText}
               onPress={() => {
                 console.log('going to redeem history');
-                close();
+                // close();
+                dispatch(Actions.setSuccessModal(false))
               }}></FullButton>
           </View>
         </View>
