@@ -47,7 +47,7 @@ const OtpScreen = props => {
             // Navigation.navigate('SignUp');
             const obj = {
               mobile: isLogin ? mobile : mobile.mobile,
-              name,
+              name: isLogin ? name : mobile.name,
               otp: code
             };
             dispatch(Actions.verifyOtp(obj));

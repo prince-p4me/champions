@@ -102,16 +102,13 @@ function* signUp({ type, payload }) {
   try {
     yield put({ type: Types.SET_LOADING, payload: true }); //show loading
     let response = yield call(Apiservice.signUp, payload); //calling Api
-    if (response && response.status) {
-      Navigation.navigate('Otp', {
-        mobile: payload,
-        name: response.name,
-        login: false,
-      });
-    }
-    showResponse(response);
-
     yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
+    showResponse(response);
+    Navigation.navigate('Otp', {
+      mobile: payload,
+      name: payload.name,
+      login: false,
+    });
   } catch (error) {
     yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
     console.log('error login', JSON.stringify(error));
