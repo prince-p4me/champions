@@ -45,6 +45,15 @@ export const isLoading = (state = false, action) => {
   }
 };
 
+export const isSuccess = (state = false, action) => {
+  switch (action.type) {
+    case Types.IS_SUCCESS:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export const isRtl = (state = false, action) => {
   switch (action.type) {
     case Types.IS_RTL:

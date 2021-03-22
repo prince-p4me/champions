@@ -71,7 +71,7 @@ function* getBanners({ type, payload }) {
     // console.log('response in saga', JSON.stringify(response));
     yield put({ type: Types.BANNERS_LIST, payload: response.data }); //hide loading
     yield put({ type: Types.SET_LOADING, payload: false });
-    store.dispatch(Actions.getPoints())
+    store.dispatch(Actions.getPoints());
   } catch (error) {
     console.log(error);
     yield put({ type: Types.SET_LOADING, payload: false });
@@ -144,6 +144,7 @@ function* scanQr({ type, payload }) {
     yield put({ type: Types.SET_LOADING, payload: false }); //hide loading
     if (response && response.status) {
       store.dispatch(Actions.getPoints())
+      store.dispatch(Actions.setSuccessModal(true));
     }
   } catch (error) {
     console.log(error);

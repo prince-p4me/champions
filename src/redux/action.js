@@ -42,6 +42,13 @@ export function setRtl(payload) {
   }
 }
 
+export function setSuccessModal(payload) {
+  return {
+    type: Types.IS_SUCCESS,
+    payload
+  }
+}
+
 export function setLanguage(payload) {
   return {
     type: Types.LANGUAGE,

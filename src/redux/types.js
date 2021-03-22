@@ -13,3 +13,4 @@ export const USER = 'USER';
 export const LOG_OUT = 'LOG_OUT';
 export const SIGN_UP = 'SIGN_UP';
 export const SCAN_QR = 'SCAN_QR';
+export const IS_SUCCESS = 'IS_SUCCESS';

@@ -17,46 +17,29 @@ import { useSelector, useDispatch } from 'react-redux';
 import Modal from 'react-native-modal';
 import Clipboard from "@react-native-community/clipboard";
 import Toast from "react-native-simple-toast";
+import * as Actions from '../../redux/action';
 
 const SuccessModal = (props) => {
-  const { visible, close } = props;
+  const { visible, close, points } = props;
   const isRtl = useSelector((state) => state.isRtl);
+  const dispatch = useDispatch();
 
   return (
     <Modal isVisible={visible} style={{ margin: 0 }}>
       <View style={{ flex: 1, backgroundColor: Colors.bgColor }}>
         <View style={styles.firstSection}>
-          <TouchableOpacity
-            style={[styles.closeBtn, isRtl ? { left: 20 } : { right: 20 }]}
-            onPress={() => close()}>
-            <Image source={Images.close} style={{
-              width: 30, height: 30,
-              tintColor: Colors.white,
-              resizeMode: "contain"
-            }}></Image>
+          <TouchableOpacity onPress={() => dispatch(Actions.setSuccessModal(false))}
+            style={[styles.closeBtn, isRtl ? { left: 20 } : { right: 20 }]} >
+            <Image source={Images.close} style={styles.closeImage}></Image>
           </TouchableOpacity>
-          <Image
-            source={congrat}
-            style={{
-              width: 100,
-              height: 70,
-              borderRadius: 15,
-            }}
-            resizeMode="contain"></Image>
+          <Image source={congrat} style={styles.congratImage} resizeMode="contain"></Image>
           <View style={{ width: '100%', alignItems: 'center' }}>
             <TextMedium text={i18n.t('congrat')} style={styles.congrats} />
             <TextMedium text={i18n.t('won_points')} style={styles.congrats} />
             <View style={styles.congratsText}>
-              <TextSemiBold
-                text="10,000"
-                style={[styles.congrats, { fontSize: Sizes.large }]}
-              />
+              <TextSemiBold text={points} style={[styles.congrats, { fontSize: Sizes.large }]} />
               <View style={{ width: 5 }}></View>
-              <Image source={Images.star} style={{
-                width: 15, height: 15,
-                tintColor: Colors.semiGold,
-                resizeMode: "contain"
-              }}></Image>
+              <Image source={Images.star} style={styles.starImage}></Image>
             </View>
           </View>
           <View style={{ width: '60%' }}>
@@ -111,6 +94,21 @@ const SuccessModal = (props) => {
 };
 
 const styles = StyleSheet.create({
+  closeImage: {
+    width: 24, height: 24,
+    tintColor: Colors.white,
+    resizeMode: "contain"
+  },
+  starImage: {
+    width: 15, height: 15,
+    tintColor: Colors.semiGold,
+    resizeMode: "contain"
+  },
+  congratImage: {
+    width: 100,
+    height: 70,
+    borderRadius: 15,
+  },
   closeBtn: {
     position: 'absolute',
     top: 20,

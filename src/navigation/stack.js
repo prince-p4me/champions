@@ -8,7 +8,7 @@ import SignUpScreen from '../screens/Auth/SignUp';
 import LandingScreen from '../screens/Auth/Landing';
 import { useSelector, useDispatch } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
-import ScanQrCode from '../screens/ScanQrCode';
+import ScanQrCode from '../screens/Dashboard/ScanQrCode';
 
 const Stack = createStackNavigator();
 

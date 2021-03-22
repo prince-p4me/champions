@@ -3,17 +3,16 @@ import { View, Dimensions } from 'react-native';
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
-import * as Navigation from '../navigation/navigation';
+import * as Navigation from '../../navigation/navigation';
 
 const onSuccess = (e) => {
   Navigation.navigate('Home', { data: e.data });
 };
+
 const ScanQrCode = () => {
   return (
     <View
-      style={{
-        flex: 1,
-      }}>
+      style={{ flex: 1 }}>
       <QRCodeScanner
         style={{ flex: 1 }}
         flashMode={RNCamera.Constants.FlashMode.auto}
@@ -25,4 +24,5 @@ const ScanQrCode = () => {
     </View>
   );
 };
+
 export default ScanQrCode;
