@@ -59,7 +59,7 @@ const SignupScreen = () => {
       );
       return;
     }
-    dispatch(Actions.signUp({ name, mobile }));
+    dispatch(Actions.signUp({ name, mobile, type: "mobile" }));
   };
 
 
