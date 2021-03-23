@@ -36,6 +36,15 @@ export const getPoints = (state = points, action) => {
   }
 };
 
+export const getOffers = (state = points, action) => {
+  switch (action.type) {
+    case Types.OFFERS:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export const isLoading = (state = false, action) => {
   switch (action.type) {
     case Types.SET_LOADING:
