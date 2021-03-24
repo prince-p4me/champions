@@ -32,8 +32,26 @@ const LoginScreen = () => {
   const dispatch = useDispatch();
   let language = useSelector((state) => state.getLanguage);
   const forceUpdate = React.useReducer((bool) => !bool)[1];
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
   useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true); // or some other action
+      },
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false); // or some other action
+      },
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
     setTimeout(() => {
       I18n.locale = language;
       forceUpdate();
@@ -60,10 +78,10 @@ const LoginScreen = () => {
       <KeyboardAvoidingView
         behavior="position"
         style={{
-          flex: 6,
+          flex: 8,
           alignItems: 'center',
-          paddingTop: 20,
           paddingHorizontal: 16,
+          paddingTop: 30,
         }}>
         <TextBold
           text={I18n.t('login')}
@@ -97,7 +115,9 @@ const LoginScreen = () => {
         />
       </KeyboardAvoidingView>
 
-      <TextDevider text={I18n.t('loginwith')}></TextDevider>
+      {!isKeyboardVisible && (
+        <TextDevider text={I18n.t('loginwith')}></TextDevider>
+      )}
 
       <View
         style={{
