@@ -23,7 +23,7 @@
     "redeem": "Redeem",
     "wonmorepoints": "Won more Points",
     "scanfor": "Scan For",
-    "myreward": "Won more Points",
+    "myreward": "My Reward",
     "refer": "Refer a friend",
     "alloffer": "All Offers",
     "Seeall": "See all",
@@ -52,7 +52,7 @@
     "Contactus": "Contact Us",
     "sendquery": "Send Query",
     "about": "About",
-    "termcondition": "< ![CDATA[Terms & Conditions]] >",
+    "termcondition": "Terms & Conditions",
     "Privacy": "Privacy Policies",
     "logout": "Logout",
     "Profile": "Profile",
@@ -84,5 +84,8 @@
     "go_reward": "Go to My Rewards Points",
     "go_redeem": "Go to My Redeem History",
     "copy": "Copy",
-    "resend": "Resend OTP in "
+    "redeemnow": "Redeem Now",
+    "resend": "Resend OTP in ",
+    "readmore": "Read More",
+    "EarnedWon": "Earned/Won"
 }

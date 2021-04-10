@@ -6,6 +6,7 @@ export default Colors = {
   bgColor: '#f8f8f8',
   bgGray: '#eeeeee',
   darkBGgray: '#6e6e6e',
-  semiGold: '#d3b46d',
+  semiGold: '#c2ad7f',
   green: '#3cb244',
+  lightgrey: '#6AB8B8B8',
 };

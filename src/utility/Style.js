@@ -88,7 +88,7 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: 'normal',
     fontSize: 18,
     color: Color.white,
     letterSpacing: 1,
@@ -180,14 +180,22 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    marginTop:10,
     marginStart: 10,
     marginBottom: 10,
+  },
+  winnerlayout: {
+     alignItems: 'center',
+    justifyContent: 'flex-start',
+    marginStart: 10,
+    marginBottom: 10,
+    width:200
   },
   pointTypesContainer: {
     backgroundColor: Color.white,
     height: 175,
     borderRadius: 7,
-    borderWidth: 1,
+     
     borderColor: Color.darkBGgray,
     marginStart: 1,
     marginEnd: 1,
@@ -197,6 +205,90 @@ export default StyleSheet.create({
     // paddingEnd: 20,
     paddingTop: 6,
     marginBottom: 15,
+  },
+  pointTypesContainerreward: {
+    backgroundColor: Color.theme,
+    height: 175,
+    borderRadius: 10,
+    marginTop:5,
+    marginLeft:5,
+    marginRight:2,
+    
+    borderColor: Color.darkBGgray,
+      flexDirection: 'row',
+    justifyContent: 'space-between',
+    // paddingStart: 20,
+    // paddingEnd: 20,
+    paddingTop: 6,
+    marginBottom: 15,
+  },
+  rewardcontainer: {
+    backgroundColor: Color.white,
+    height: 125,
+    borderRadius: 7,
+     
+    marginTop:10,
+    borderColor: Color.darkBGgray,
+     
+    marginEnd: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    // paddingStart: 20,
+    // paddingEnd: 20,
+    paddingTop: 6,
+    marginBottom: 15,
+  },
+  winnercontainer: {
+    backgroundColor: Color.white,
+    height: 175,
+    width:130,
+    margin:3,
+    borderRadius: 7,
+    paddingTop:20,
+    flexDirection:'column',
+    alignItems:'center',
+     shadowRadius:20,
+     shadowColor:Color.bgGray
+  },
+  pointwoncontainer: {
+    backgroundColor:"#F1FFF2",
+    height: 175,
+    width:150,
+    margin:3,
+    borderRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 100,
+    shadowRadius: 1,  
+    paddingTop:20,
+    flexDirection:'column',
+    alignItems:'center',
+     shadowRadius:20,
+     shadowColor:Color.bgGray
+  },
+  winnercontainerfull: {
+    backgroundColor: Color.white,
+    height: 100,
+    
+    margin:3,
+    borderRadius: 7,
+    paddingTop:20,
+    flexDirection:'row',
+    alignItems:'center',
+     shadowRadius:20,
+     shadowColor:Color.bgGray
+  },
+  offercontainer: {
+    backgroundColor: Color.white,
+    height: 120,
+   
+    margin:5,
+    borderRadius: 7,
+   
+    flexDirection:'row',
+    alignItems:'center',
+     shadowRadius:20,
+     shadowColor:Color.bgGray
   },
   pointTypeCol: {
     flex: 1,
@@ -208,8 +300,8 @@ export default StyleSheet.create({
   },
   pointTypeColMiddle: {
     flex: 1,
-    borderRightWidth: 1,
-    borderLeftWidth: 1,
+    borderRightWidth: 0.3,
+    borderLeftWidth: 0.3,
     borderColor: Color.darkBGgray,
     flexDirection: 'column',
     marginBottom: 20,
@@ -222,13 +314,32 @@ export default StyleSheet.create({
     marginTop: -90,
     // marginStart: 100,
     // paddingStart: 100,
-    borderRightWidth: 1,
+    borderRightWidth: 0.3,
     borderColor: Color.darkBGgray,
+  },
+  rewardmiddle: {
+    flex: 1,
+     
+     flexDirection: 'column',
+    marginBottom: 20,
+    marginTop: 10,
+    marginStart: 10,
+    alignItems: 'center',
   },
   pointIcon: {
     width: 80,
     height: 80,
     marginHorizontal: 10,
+  },
+  rewardimage: {
+    width: 50,
+    height: 50,
+    marginHorizontal: 10,
+  },
+  winnerimage: {
+    width: 80,
+    height: 80,
+    marginHorizontal: 10
   },
   qrContainer: {
     flexDirection: 'column',

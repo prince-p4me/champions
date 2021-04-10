@@ -1,5 +1,7 @@
 import Constants from '../utility/Constant';
 import { store } from "../redux/store";
+import { BackHandler } from "react-native";
+import { showResponse } from "../utility/Index";
 
 async function callApi(urlString, body, methodType) {
   console.log('-----------AXIOS  Api request is----------- ');
@@ -26,7 +28,14 @@ async function callApi(urlString, body, methodType) {
     const response = await fetch(urlString, options);
     const jsonResposne = await response.json();
     console.log('result :--', JSON.stringify(jsonResposne));
-    return jsonResposne;
+    if (jsonResposne && jsonResposne.status && jsonResposne.status == 100) {
+      Toast.showWithGravity("Your account has been suspended . . .", Toast.SHORT, Toast.BOTTOM);
+      setTimeout(() => {
+        BackHandler.exitApp();
+      }, 1000);
+    } else {
+      return jsonResposne;
+    }
   } catch (error) {
     console.log('error :--', JSON.stringify(error));
     return error;
@@ -50,6 +59,15 @@ export function getPoints(body) {
   };
   console.log('----------Points Api Call ------------------');
   return callApi(Constants.API_URL + 'points.php', obj, 'POST');
+}
+
+export function getOffers(body) {
+  const state = store.getState();
+  let obj = {
+    user_id: state.getUser.id
+  };
+  console.log('----------Points Api Call ------------------');
+  return callApi(Constants.API_URL + 'offer_list.php', obj, 'POST');
 }
 
 export function resendOtp(body) {

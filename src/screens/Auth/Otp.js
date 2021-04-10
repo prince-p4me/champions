@@ -1,24 +1,24 @@
-import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, SafeAreaView} from 'react-native';
+import React, { useState, useEffect} from 'react';
+import { View, StyleSheet, SafeAreaView ,TextInput,TouchableOpacity,Image} from 'react-native';
 import GlobalStyles from '../../utility/Style';
 import * as Navigation from '../../navigation/navigation';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
-import Color from '../../utility/Color';
+import Colors from '../../utility/Color';
 import i18n from '../../services/i18n';
 import Sizes from '../../utility/Sizes';
 import FullButton from '../../components/FullButton';
-import {TextBold, TextRegular} from '../../components/TextView';
+import { TextBold, TextRegular } from '../../components/TextView';
 import LinkButton from './LinkButton';
 import * as Actions from '../../redux/action';
-import {useSelector, useDispatch} from 'react-redux';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import { useSelector, useDispatch } from 'react-redux';
 
+import Images from '../../utility/Image';
 const OtpScreen = (props) => {
   const dispatch = useDispatch();
   const [code, setCode] = useState('');
   let [counter, setCounter] = useState(59);
 
-  const {mobile, login: isLogin, name} = props.route.params;
+  const { mobile, login: isLogin, name } = props.route.params;
   console.log('mobile', mobile);
   console.log('isLogin', isLogin);
   console.log('name', name);
@@ -34,19 +34,32 @@ const OtpScreen = (props) => {
   }, [counter]);
 
   return (
-    <View style={[GlobalStyles.container, {paddingVertical: 30}]}>
-      <SafeAreaView style={{backgroundColor: Colors.theme}}></SafeAreaView>
+    <View >
+      <SafeAreaView style={{ backgroundColor: Colors.theme }}></SafeAreaView>
+
+      
+     
+      <TouchableOpacity   onPress={() => Navigation.goBack()}>
+        <Image
+        source={Images.back}
+        
+        style={{tintColor:"#000",margin:20 }}
+        resizeMode="contain"></Image>
+        </TouchableOpacity>
+
       <TextBold
         text={i18n.t('otplongtext')}
-        style={{textAlign: 'center', fontSize: Sizes.extraDouble}}
+        style={{ textAlign: 'center', fontSize: Sizes.extraDouble }}
       />
 
       <TextRegular
         text={i18n.t(isLogin ? 'otplongtext2' : 'otplongtext3')}
-        style={{textAlign: 'center', fontSize: Sizes.regular, marginTop: 30}}
+        style={{ textAlign: 'center', fontSize: Sizes.regular, marginTop: 30 }}
       />
+
+
       <OTPInputView
-        style={{width: '80%', height: 200}}
+        style={{ width: '80%', height: 200,marginLeft:40 }}
         pinCount={4}
         autoFocusOnLoad
         placeholderCharacter="*"
@@ -54,7 +67,7 @@ const OtpScreen = (props) => {
         codeInputHighlightStyle={styles.underlineStyleHighLighted}
         onCodeFilled={(code) => setCode(code)}
       />
-      <View style={{width: '100%', paddingHorizontal: '10%'}}>
+      <View style={{ width: '100%', paddingHorizontal: '10%' }}>
         <FullButton
           onPress={() => {
             // Navigation.navigate('SignUp');
@@ -66,11 +79,11 @@ const OtpScreen = (props) => {
             dispatch(Actions.verifyOtp(obj));
           }}
           text={i18n.t(isLogin ? 'login' : 'signup2')}
-          textColor={Color.white}
-          bgColor={Color.theme}
+          textColor={Colors.white}
+          bgColor={Colors.theme}
         />
       </View>
-      <View style={{height: 30}}></View>
+      <View style={{ height: 30 }}></View>
       {counter <= 0 && (
         <LinkButton
           text={i18n.t('didntrecive')}
@@ -109,13 +122,13 @@ const styles = StyleSheet.create({
     height: 50,
     borderWidth: 1,
     borderRadius: 10,
-    backgroundColor: Color.bgGray,
-    color: Color.darkBGgray,
+    backgroundColor: Colors.bgGray,
+    color: Colors.darkBGgray,
     fontSize: Sizes.double,
     // borderBottomWidth: 1,
   },
   underlineStyleHighLighted: {
-    borderColor: Color.theme,
+    borderColor: Colors.theme,
   },
 });
 export default OtpScreen;

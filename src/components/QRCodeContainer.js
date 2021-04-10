@@ -22,11 +22,11 @@ const QRCodeContainer = () => {
 
       <TextBold
         text={i18n.t('scanfor')}
-        style={{ textAlign: 'center', fontSize: Sizes.large }}
+        style={{ textAlign: 'center', fontSize: Sizes.large,marginTop:10 }}
       />
       <TextThin
-        text={i18n.t('myreward')}
-        style={{ textAlign: 'center', fontSize: Sizes.large }}
+        text={i18n.t('wonmorepoints')}
+        style={{ textAlign: 'center', fontSize: Sizes.large,marginTop:10 }}
       />
     </View>
   );

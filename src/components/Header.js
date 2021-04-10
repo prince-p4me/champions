@@ -16,6 +16,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as Actions from '../redux/action';
 
 import Logout from '../assets/imgs/home-logout.png';
+import Back from '../assets/imgs/arrow.png';
 import Edit from '../assets/imgs/edit.png';
 import Help from '../assets/imgs/help.png';
 
@@ -36,7 +37,7 @@ const Header = (props) => {
               style={styles.drawerButton}
               activeOpacity={0.7}
               onPress={() => Navigation.goBack()}>
-              <Image source={SideIcon} style={styles.sideIcon}></Image>
+              <Image source={Back} style={styles.sideIcon}></Image>
             </TouchableOpacity>
           )}
           <Text style={styles.title}>{title}</Text>
@@ -46,7 +47,15 @@ const Header = (props) => {
         <View style={styles.headerDashboard}>
           <View style={styles.headerContainer}>
             <View style={styles.headerCol}>
-              <Image source={About} style={styles.profileIcon}></Image>
+
+
+              <TouchableOpacity
+                onPress={() => {
+                  Navigation.navigate('Profilemain');
+                }}>
+                <Image source={About} style={styles.profileIcon}></Image>
+              </TouchableOpacity>
+
             </View>
 
             <View style={styles.headerRightRow}>
@@ -54,6 +63,7 @@ const Header = (props) => {
               <View style={styles.helpSpacing}>
                 <Image source={Help} style={styles.rightHeaderIcon}></Image>
               </View>
+
               <TouchableOpacity onPress={() => {
                 dispatch(Actions.logOut());
               }}>

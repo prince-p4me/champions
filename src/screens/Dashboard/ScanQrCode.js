@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions,TouchableOpacity,Image } from 'react-native';
 
+import Images from '../../utility/Image';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 import * as Navigation from '../../navigation/navigation';
@@ -13,6 +14,16 @@ const ScanQrCode = () => {
   return (
     <View
       style={{ flex: 1 }}>
+
+<TouchableOpacity   onPress={() => Navigation.goBack()}
+  >
+<Image
+        source={Images.back}
+        
+         
+        resizeMode="contain"></Image>
+        </TouchableOpacity>
+
       <QRCodeScanner
         style={{ flex: 1 }}
         flashMode={RNCamera.Constants.FlashMode.auto}

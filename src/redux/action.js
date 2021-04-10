@@ -21,6 +21,13 @@ export function getBanners(payload) {
   };
 }
 
+export function getOffers(payload) {
+  return {
+    type: Types.GET_OFFERS,
+    payload,
+  };
+}
+
 export function getPoints(payload) {
   return {
     type: Types.GET_POINTS,
